@@ -1,0 +1,1332 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>网络内容安全|整理 | wwwty1231的博客</title><meta name="author" content="wwwty1231"><meta name="copyright" content="wwwty1231"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="网络信息内容获取技术一、网络信息内容获取模型  互联网信息类型 网络媒体信息：互联网网站公开发布的信息。网络用户通常可以基于通用网络浏览器获得互联网公开发布的信息。  网络通信信息：除了使用浏览器之外的专业客户端软件，实现与特定点的通信或进行点对点通信时所交互的信息   发布信息类型 ​	文本信息：比例最大 ​	图像信息 ​	音频信息 ​	视频信息 信息检索是信息的需求者主动地在网上搜寻所需要的信">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网络内容安全|整理">
+<meta property="og:url" content="http://wwwty1231.github.io/post/e6f34951.html">
+<meta property="og:site_name" content="wwwty1231的博客">
+<meta property="og:description" content="网络信息内容获取技术一、网络信息内容获取模型  互联网信息类型 网络媒体信息：互联网网站公开发布的信息。网络用户通常可以基于通用网络浏览器获得互联网公开发布的信息。  网络通信信息：除了使用浏览器之外的专业客户端软件，实现与特定点的通信或进行点对点通信时所交互的信息   发布信息类型 ​	文本信息：比例最大 ​	图像信息 ​	音频信息 ​	视频信息 信息检索是信息的需求者主动地在网上搜寻所需要的信">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://wwwty1231.github.io/img/cover1.png">
+<meta property="article:published_time" content="2023-12-24T13:19:53.000Z">
+<meta property="article:modified_time" content="2023-12-24T13:22:05.527Z">
+<meta property="article:author" content="wwwty1231">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="nlp">
+<meta property="article:tag" content="机器学习">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://wwwty1231.github.io/img/cover1.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://wwwty1231.github.io/post/e6f34951.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '网络内容安全|整理',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-12-24 21:22:05'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/head.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">5</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/Tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/cover1.png')"><nav id="nav"><span id="blog-info"><a href="/" title="wwwty1231的博客"><span class="site-name">wwwty1231的博客</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/Tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">网络内容安全|整理</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-12-24T13:19:53.000Z" title="发表于 2023-12-24 21:19:53">2023-12-24</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-12-24T13:22:05.527Z" title="更新于 2023-12-24 21:22:05">2023-12-24</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%A4%87%E5%BF%98%E5%BD%95/">备忘录</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="网络内容安全|整理"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="网络信息内容获取技术"><a href="#网络信息内容获取技术" class="headerlink" title="网络信息内容获取技术"></a>网络信息内容获取技术</h2><h3 id="一、网络信息内容获取模型"><a href="#一、网络信息内容获取模型" class="headerlink" title="一、网络信息内容获取模型"></a>一、网络信息内容获取模型</h3><img src="http://typora-win11.oss-cn-beijing.aliyuncs.com/typora-img/2023/12/10/20231210-155129.png" alt="image-20231210155128073" style="zoom:67%;" />
+
+<h4 id="互联网信息类型"><a href="#互联网信息类型" class="headerlink" title="互联网信息类型"></a>互联网信息类型</h4><ul>
+<li><p><strong>网络媒体信息</strong>：互联网网站公开发布的信息。网络用户通常可以基于通用网络浏览器获得互联网公开发布的信息。</p>
+</li>
+<li><p><strong>网络通信信息</strong>：除了使用浏览器之外的专业客户端软件，实现与特定点的通信或进行点对点通信时所交互的信息</p>
+</li>
+</ul>
+<p><strong>发布信息类型</strong></p>
+<p>​	文本信息：比例最大</p>
+<p>​	图像信息</p>
+<p>​	音频信息</p>
+<p>​	视频信息</p>
+<p><strong>信息检索</strong>是信息的需求者主动地在网上搜寻所需要的信息。</p>
+<p><strong>信息推荐,又称为信息推送</strong> ，是指网络信息服务系统从网上的信息源或信息提供商获取信息，并通过固定的频道向用户发送信息的新型信息传播系统。</p>
+<h4 id="网络媒体信息获取的分类"><a href="#网络媒体信息获取的分类" class="headerlink" title="网络媒体信息获取的分类"></a>网络媒体信息获取的分类</h4><p>全网信息获取</p>
+<p>定点信息获取</p>
+<p><strong>元搜索</strong>引擎又称多搜索引擎,它可以同时查找多个单搜索引擎的www站点。</p>
+<p>按其搜索机制可分为并列式和串行式。</p>
+<p>➢ 并行式元搜索引擎指将查询要求同时发向各个独立的搜索引擎,然后将结果按特定的顺序提供给用户。</p>
+<p>➢ 串行式元搜索引擎是将查询要求先发给某个独立的搜索引擎,待其返回结果再将请求发给另一个搜索引擎</p>
+<p><strong>并行式元搜索</strong>引擎运行模式好,搜索时间短。</p>
+<p><strong>网络媒体信息获取的技术难点</strong></p>
+<p>​	◆<strong>网络媒体信息:形态各异、信息类型多样。</strong>针对完全异构的网络媒体信息，对信息提取的全面性和时效性提出了更高的要求。</p>
+<p>​	◆<strong>拒绝服务：</strong>部分网络媒体选择屏蔽过于频繁的、来自相同客户端的信息获取操作。</p>
+<p>​		◆降低访问频率</p>
+<p>​		◆更换客户端信息</p>
+<h3 id="二、搜索引擎技术"><a href="#二、搜索引擎技术" class="headerlink" title="二、搜索引擎技术"></a>二、<strong>搜索引擎技术</strong></h3><p>中文搜索引擎的关键技术:</p>
+<ul>
+<li>网页内容分析</li>
+<li>网页索引</li>
+<li>查询解析</li>
+<li>相关性计算</li>
+</ul>
+<h4 id="1-网上采集算法（爬虫）"><a href="#1-网上采集算法（爬虫）" class="headerlink" title="1 网上采集算法（爬虫）"></a>1 <strong>网上采集算法</strong>（爬虫）</h4><p><strong>网络媒体信息获取原理</strong></p>
+<p>​	 1.初始URL集合</p>
+<p>​	 2.信息获取</p>
+<p>​	 3.信息解析</p>
+<p>​	 4.信息判重</p>
+<p><strong>爬虫URL抓取策略</strong></p>
+<ul>
+<li><p>深度优先遍历策略</p>
+</li>
+<li><p>宽度优先遍历策略</p>
+</li>
+<li><p>反向链接数策略</p>
+<p>反向链接数：一个网页被其他网页链接指向的数量。</p>
+</li>
+<li><p>Partial PageRank策略</p>
+<p>对于于已经下载的网页，连同待抓取URL队列中的URL，形成网页集合，计算每个页面的PageRank值，计算完之后，将待抓取URL队列中的URL按照PageRank值的大小排列，并按照该顺序抓取页面</p>
+</li>
+<li><p>OPIC策略</p>
+<p>该算法实际上也是对页面进行一个重要性打分。在算法开始前，给所有页面一个相同的初始现金（cash）。当下载了某个页面P之后，将P的现金分摊给所有从P中分析出的链接，并且将P的现金清空。对于待抓取URL队列中的所有页面按照现金数进行排序。</p>
+</li>
+<li><p>大站优先策略</p>
+<p>对于待抓取URL队列中的所有网页，根据所属的网站进行分类。对于待下载页面数多的网站，优先下载。</p>
+</li>
+</ul>
+<h4 id="2-排级算法"><a href="#2-排级算法" class="headerlink" title="2 排级算法**"></a>2 <strong>排级算法</strong>**</h4><h5 id="PageRank"><a href="#PageRank" class="headerlink" title="PageRank"></a><strong>PageRank</strong></h5><p><strong>原理：</strong>民主表决</p>
+<p><strong>核心思想：</strong> 在互联网上，如果一个网页被很多其它网页所链接，说明它受到普遍的承认和信赖，那么它的排名就高。</p>
+<p>基本想法是在有向图上定义一个<strong>随机游走模型</strong>，即一阶马尔可夫链，描述随机游走者沿着有向图随机访问各个结点的行为。在一定条件下，极限情况访问每个结点的概率收敛到平稳分布，这时各个结点的平稳概率值就是其PageRank值，表示结点的重要度。PageRank 是递归定义的，PageRank 的计算可以通过迭代算法进行。</p>
+<p><strong>计算方法：</strong><br>$$<br>\Pr(t)&#x3D;(1-d)+d\left(\sum_{i&#x3D;1}^n{(\frac{\Pr(t_i)}{|t_i|})}\right)<br>$$</p>
+<p> 其中 $Pr(t_i)$ 是入度，$|t_i|$ 是出度，$d$ 是影响因子，取0.85。</p>
+<p>为每个页面赋相同的初值，计算每个页面的PR值，应满足所有页面PR值和为1。若和不为1，则按比例对所有结果进行缩小，使得其和为1.</p>
+<p><strong>优点：</strong>	（1）直接高效</p>
+<p>​				（2）主题集中</p>
+<p><strong>PageRank</strong>算法存在的缺陷如下：</p>
+<p>​	（1）完全忽略网页内容，干扰挖掘结果</p>
+<p>​	（2）结果范围窄</p>
+<p>​	（3）影响因子与网页获取数量缺乏科学性</p>
+<p><strong>PR（PageRank（网页级别）)</strong></p>
+<p>​	用来表现网页等级的一个标准，级别分别是0到10，是Google用于评测一个网页“重要性”的一种方法</p>
+<p>​	PR值越高说明该网页越受欢迎（越重要）</p>
+<p>​	一般PR值达到4，就算是一个不错的网站了</p>
+<h5 id="HITS"><a href="#HITS" class="headerlink" title="HITS"></a><strong>HITS</strong></h5><p><strong>Hub</strong>页面（枢纽页面）和<strong>Authority</strong>页面（权威页面）是<strong>HITS</strong>算法最基本的两个定义。</p>
+<p><strong>Hub</strong>（枢纽）页面：类似于一个<strong>分类器</strong>，其为包含了很多指向高质量Authority页面链接的网页。例如，hao123首页汇集了全网优质网址，故可以认为其是一个典型的高质量Hub网页；</p>
+<p><strong>Authority</strong>（权威）页面：类似于一个<strong>聚类器</strong>，其为与某个领域或者某个话题相关的高质量网页。例如，京东首页、淘宝首页等，都是与网络购物领域相关的高质量网页。</p>
+<p><strong>枢纽值</strong>（Hub Scores）页面上所有导出链接指向页面的权威值之和。</p>
+<p><strong>权威值</strong>（Authority Scores）所有导入链接所在的页面的枢纽值之和。</p>
+<p><strong>优点：</strong></p>
+<p> （1）知识范围扩大。</p>
+<p> （2）搜索时部分地考虑了页面内容，挖掘结果科学性大大增强</p>
+<p><strong>存在的问题：</strong></p>
+<p> （1）计算效率低，实时性差   与查询相关的算法</p>
+<p> （2）“主题漂移”</p>
+<p> （3）易被作弊者操纵结果</p>
+<p> （4）结构不稳定</p>
+<h3 id="三、数据挖掘技术"><a href="#三、数据挖掘技术" class="headerlink" title="三、数据挖掘技术"></a>三、数据挖掘技术</h3><p>数据挖掘（Data Mining，DM）</p>
+<p>概念：通过从数据库中抽取<strong>隐含的、未知的、具有潜在使用价值信息</strong>的过程。</p>
+<h4 id="Web挖掘技术"><a href="#Web挖掘技术" class="headerlink" title="Web挖掘技术"></a>Web挖掘技术</h4><ul>
+<li><p>网络知识发现</p>
+</li>
+<li><p>涉及<strong>数据库、机器学习、统计学、模式识别、人工智能、计算机语言、计算机网络</strong>等多个领域</p>
+</li>
+<li><p>从大量<strong>非结构化、异构</strong>的Web信息资源中发现兴趣性（interestingness）的知识，包括概念、模式、规则、规律、约束及可视化等形式的非平凡过程</p>
+</li>
+</ul>
+<h4 id="Web文本挖掘技术"><a href="#Web文本挖掘技术" class="headerlink" title="Web文本挖掘技术"></a>Web文本挖掘技术</h4><p>定义：指从大量文本的集合C中发现隐含的模式p。如果将C当作输入，p当作输出，那么Web文本挖掘的过程就是从输入到输出的一个映射 。</p>
+<h3 id="四、信息推荐技术"><a href="#四、信息推荐技术" class="headerlink" title="四、信息推荐技术"></a>四、<strong>信息推荐技术</strong></h3><p>信息推荐有三个组成要素：<strong>推荐候选对象、用户、推荐方法</strong>。</p>
+<p>信息推荐系统的形式化定义：</p>
+<p>设$C$是所有用户（ user ）的集合，$S$是所有可以推荐给用户的商品对象的集合，效用函数$u$（ ）用以计算对象$s$对用户$c$的<strong>推荐度</strong>（如提供商的可靠性vendor reliability）和产品的<strong>可得性</strong>（product availability），即<em>R</em>是一定范围内的全序的非负实数，信息推荐要研究的问题就是<strong>找到推荐度R最大</strong>的那些对象 ，即：<br>$$<br>u:C\times S\to R<br>$$<br>$R$是一定范围内的全序的非负实数，信息推荐要研究的问题就是<strong>找到推荐度R最大</strong>的那些对象$s^*$ ，即：<br>$$<br>\forall c\in C,s^*&#x3D;\arg\max_{s\in S}u(c,s)<br>$$<br><strong>信息推荐</strong>分为：</p>
+<ul>
+<li><p>基于内容推荐</p>
+</li>
+<li><p>协同过滤推荐：<strong>推荐相似用户所选择的对象</strong></p>
+<p>可分为两类：</p>
+<p>​    ➢<strong>启发式方法</strong></p>
+<p>​    ➢<strong>基于模型的方法（model-based）</strong></p>
+</li>
+<li><p>组合推荐</p>
+</li>
+</ul>
+<h3 id="五、信息还原技术"><a href="#五、信息还原技术" class="headerlink" title="五、信息还原技术"></a>五、信息还原技术</h3><ol>
+<li>电脑还原技术<ul>
+<li>软件还原</li>
+<li>硬件还原</li>
+</ul>
+</li>
+<li>网页还原技术<ul>
+<li>数据包捕获技术：网络数据包的捕获技术采用的网卡接收方式为混杂方式</li>
+<li>协议还原技术</li>
+<li>网页内容还原技术</li>
+</ul>
+</li>
+<li>多媒体信息还原技术</li>
+</ol>
+<h2 id="文本挖掘基础"><a href="#文本挖掘基础" class="headerlink" title="文本挖掘基础"></a><strong>文本挖掘基础</strong></h2><h3 id="分词"><a href="#分词" class="headerlink" title="分词"></a>分词</h3><h4 id="文本特征预处理"><a href="#文本特征预处理" class="headerlink" title="文本特征预处理"></a><strong>文本特征预处理</strong></h4><ul>
+<li><p>定义：文本特征指的是关于文本的元数据</p>
+</li>
+<li><p>分类：</p>
+<p>– 描述性特征：文本的名称、日期、大小、类型等。</p>
+<p>– 语义性特征：文本的作者、标题、机构、内容等。</p>
+</li>
+</ul>
+<h4 id="特征抽取"><a href="#特征抽取" class="headerlink" title="特征抽取"></a><strong>特征抽取</strong></h4><ul>
+<li><p>预处理</p>
+<p>– 去掉html一些tag标记</p>
+<p>– 禁用词(stop words)去除、词根还原(stemming)</p>
+<p>– (中文)分词、词性标注、短语识别、…</p>
+<p>– 词频统计</p>
+<p>​	• $TF_{i,j}$: 特征i在文档j中出现次数，词频(Term Frequency)</p>
+<p>​	• $DF_i$ :所有文档集合中出现特征i的文档数目，文档频率(Document Frequency)</p>
+<p>– 数据清洗：去掉不合适的噪声文档或文档内垃圾数据</p>
+</li>
+<li><p>文本表示</p>
+<p>– 向量空间模型</p>
+</li>
+<li><p>降维技术</p>
+<p>– 特征选择</p>
+<p>– 特征重构</p>
+</li>
+</ul>
+<p><strong>中文特征词(Term)的粒度</strong></p>
+<p>​	• Character，字            • Word，词            • Phrase，短语              • Concept，概念                 • N-gram，N元组</p>
+<p><strong>词语标记（Tokenization）</strong></p>
+<p><strong>词性还原（Lemmatization）</strong></p>
+<h4 id="汉语分词"><a href="#汉语分词" class="headerlink" title="汉语分词"></a><strong>汉语分词</strong></h4><ul>
+<li><p>分词的基本方法</p>
+<p>▪ 最大匹配法（Maximum Match based approach）</p>
+<ul>
+<li><p>正向最大匹配法（MM）</p>
+<p>▪ 自左向右</p>
+<p>▪ 每次取最长词</p>
+</li>
+<li><p>逆向最大匹配法（RMM）</p>
+<p>▪ 自右往左</p>
+<p>▪ 每次取最长词</p>
+</li>
+<li><p>双向最大匹配</p>
+<p>▪ 依次采用正向最大匹配和反向最大匹配</p>
+<p>▪ 如果结果一致则输出</p>
+<p>▪ 如果结果不一致，则采用其他方法排歧</p>
+</li>
+</ul>
+<p>▪ 最大概率分词方法</p>
+<p>1)对一个待分词的字串S，按照从左到右的顺序取出全部候选词$w1 ,w2 ,…,wi-1 wi ,… wn$；</p>
+<p>2)到词典中查出每个候选词的概率值$P$($wi$ )，并记录每个候选词的全部左邻词；</p>
+<p>3)按照公式1计算每个候选词的累计概率，同时比较得到每个候选词的最佳左邻词；</p>
+<p>4)如果当前$wn$是字串S的尾词，且累计概率$P’(wn )$最大，$wn$就是S的终点词。</p>
+<p>5)从$wn$开始，按照从右到左的顺序，依次将每个词的最佳左邻词输出，即为S的分词结果。</p>
+</li>
+</ul>
+<h3 id="文档模型"><a href="#文档模型" class="headerlink" title="文档模型"></a>文档模型</h3><h4 id="布尔模型"><a href="#布尔模型" class="headerlink" title="布尔模型"></a><strong>布尔模型</strong></h4><p>• 每个词在一篇文档中是否出现，对应权值为0或1</p>
+<p>• 文档检索→布尔逻辑运算</p>
+<h4 id="词袋模型"><a href="#词袋模型" class="headerlink" title="词袋模型"></a>词袋模型</h4><p><strong>n-gram模型</strong>，也称为N元语法模型，是一种基于统计语言模型的算法，n表示n个词语，n元语法模型通过n个词语的概率判断句子的结构。</p>
+<ul>
+<li><p>算法思想：</p>
+<p>将文本里面的内容按照字节进行大小为N的滑动窗口操作，形成了长度时N的字节片段序列，每个字节片段称为gram。对所有gram的出现频度进行统计，并且按照事先设定好的阈值进行过滤，形成关键gram列表，也就是这个文本的向量特征空间，列表中的每一种gram就是一个特征向量维度。</p>
+</li>
+</ul>
+<p><strong>向量空间模型（VSM）</strong></p>
+<ul>
+<li>向量空间模型中将文档表达为一个矢量，看作向量空间中的一个点</li>
+</ul>
+<p><strong>权重计算方法</strong></p>
+<ul>
+<li><p>布尔权重</p>
+<p>– $aij&#x3D;1(TFij&gt;0) or (TFij&#x3D;0)0$</p>
+</li>
+<li><p>$TFIDF$型权重</p>
+<p>– $TF$: $aij&#x3D;TFij$</p>
+<p>– $TF<em>IDF$: $aij&#x3D;TFij</em>log(N&#x2F;DFi )$</p>
+<p>– TFC: 对上面进行归一化</p>
+<p>– LTC: 降低TF的作用</p>
+</li>
+<li><p>基于熵概念的权重</p>
+<p>– 称为term i的某种熵</p>
+<p>– 如果term分布极度均匀：熵等于-1</p>
+<p>– 只在一个文档中出现：熵等于0</p>
+</li>
+</ul>
+<h3 id="文档相似度计算"><a href="#文档相似度计算" class="headerlink" title="文档相似度计算"></a><strong>文档相似度计算</strong></h3><h2 id="文本分类算法"><a href="#文本分类算法" class="headerlink" title="文本分类算法"></a><strong>文本分类算法</strong></h2><h3 id="评价指标"><a href="#评价指标" class="headerlink" title="评价指标"></a><strong>评价指标</strong></h3><h3 id="特征选择"><a href="#特征选择" class="headerlink" title="特征选择"></a><strong>特征选择</strong></h3><p><strong>特征选取的方法</strong></p>
+<ul>
+<li>文档频率法（DF）</li>
+<li>熵</li>
+<li>相对熵</li>
+<li>信息增益IG</li>
+<li>互信息MI</li>
+<li>$\chi^2$（卡方）</li>
+</ul>
+<p>​		$\chi ^2$越大，独立性越小，相关性越大</p>
+<h3 id="分类算法"><a href="#分类算法" class="headerlink" title="分类算法"></a>分类算法</h3><h4 id="KNN分类"><a href="#KNN分类" class="headerlink" title="KNN分类"></a>KNN分类</h4><p><strong>工作原理</strong></p>
+<p>（1）存在一个样本数据集合，也称作训练样本集，并且样本集中每个数据都存在标签，即我们知道样本集中每个数据与所属分类的对应关系。</p>
+<p>（2）输入没有标签的新数据后，将新数据与样本集中数据进行比较，然后算法提取样本集中最相似数据（最近邻）的分类标签。</p>
+<p>（3）一般来说，只选择样本数据集中前N个最相似的数据。K一般不大于20，最后，选择k个中出现次数最多的分类，作为新数据的分类</p>
+<p><strong>优点</strong></p>
+<p>（1）简单但强大。逻辑简单，无需参数进行估计；易于理解，容易实现。</p>
+<p>（2）重新训练代价低</p>
+<p><strong>缺点</strong></p>
+<p>（1）不适合在线分类，响应速度慢（是lazy learning）</p>
+<p>（2）类别评分不是规格化的</p>
+<p>（3）输出的可解释性不强</p>
+<h4 id="贝叶斯分类"><a href="#贝叶斯分类" class="headerlink" title="贝叶斯分类"></a>贝叶斯分类</h4><p><strong>分类思想</strong></p>
+<p>​	使用贝叶斯公式，<strong>通过先验概率和类别的条件概率来估计文档d对类别ci的后验概率</strong>，以此实现对文档d的类别归属判断</p>
+<p><strong>分类步骤</strong></p>
+<p>1）确定实例d的特征属性$d&#x3D;{w_1,..,w_n}$</p>
+<p>2）获取训练样本，计算先验概率$P(c_i)$</p>
+<p>3）计算类条件概率 $P(d|c_i)$假设各个特征独立</p>
+<p>4）根据概率，判断实例的类别，即计算 $P(d|c_i)P(c_i)$ ，值最大的即为预测分类</p>
+<p>$$<br>\begin{gathered}<br>\text{Bayesian公式} \<br>\begin{aligned}P(c_j\mid d_i)&#x3D;&amp;\frac{P(d_i\mid c_j)P(c_j)}{P(d_i)}\propto P(d_i\mid c_j)P(c_j)\end{aligned} \<br>P(d_{i}\mid c_{j})&#x3D;\prod_{k&#x3D;1}^{r}P(w_{ik}\mid c_{j})\text{,独立性假设} \<br>\text{参数计算} \<br>P(c_j)&#x3D;\frac{c_j\text{的文档个数}}{\text{总文档个数}} &#x3D; \frac { N ( c _ j ) }{ \sum _ k N ( c _ k ) }\approx\frac{1+N(c_j)}{|c|+\sum_{k&#x3D;1}N(c_k)} \<br>P(w_i|\mathcal{C}<em>j)&#x3D;\frac{w_i\text{在}c_j\text{类别文档中出现的次数}}{\text{在}c_j\text{类所有文档中出现的词 的次数}} \approx \frac { 1 + N _ { i j }}{\text{不同词个数}+\sum_kN</em>{kj}}<br>\end{gathered}<br>$$</p>
+<h4 id="SVM分类"><a href="#SVM分类" class="headerlink" title="SVM分类"></a>SVM分类</h4><p>支持向量机的学习策略就是间隔最大化，可形式化为一个求解凸二次规划的问题，也等价于正则化的合页损失函数的最小化问题。支持向量机的学习算法是求解凸二次规划的最优化算法。</p>
+<p>分类</p>
+<p>​	线性可分支持向量机 — 硬间隔最大化</p>
+<p>​	线性支持向量机 — 训练数据近似线性可分时，通过软间隔最大化</p>
+<p>​	非线性支持向量机 — 当训练数据线性不可分时，通过使用核技巧及软间隔最大化。</p>
+<h2 id="文本挖掘–聚类"><a href="#文本挖掘–聚类" class="headerlink" title="文本挖掘–聚类"></a><strong>文本挖掘–聚类</strong></h2><h3 id="聚类方法概述"><a href="#聚类方法概述" class="headerlink" title="聚类方法概述"></a>聚类方法概述</h3><ul>
+<li><p>聚类也称为聚类分析,指将样本分到不同的组中使得同一组中的样本差异尽可能的小，而不同组中的样本差异尽可能的大。</p>
+</li>
+<li><p>聚类得到的不同的组称为<strong>簇</strong>(cluster)。</p>
+</li>
+<li><p>一个好的聚类方法将产生以下的聚类</p>
+<p>最大化类中的相似性</p>
+<p>最小化类间的相似性</p>
+</li>
+<li><p>聚类是<strong>无监督学习</strong>，而分类是有监督学习。因此，分类里有训练和测试，而聚类没有训练。</p>
+</li>
+<li><p>分类：</p>
+<ul>
+<li><p>按算法本身划分</p>
+<p>层级聚类：每个节点都是父类的一个类；可表示为树图；分为自顶而下和自底而上</p>
+<p>非层级聚类：结构简单，关系没有前者清晰；</p>
+</li>
+<li><p>按对象是否可以兼并划分	</p>
+<p>“软聚类”：一个对象可以属于多个聚类集合</p>
+<p>“硬聚类”：每个对象只能属于一个聚类集合</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="划分聚类方法"><a href="#划分聚类方法" class="headerlink" title="划分聚类方法"></a>划分聚类方法</h3><p>给定一个有n个对象的数据集，划分聚类技术将构造数据k个划分，每一个划分就代表一个簇。也就是说，它将数据划分为k个簇，而且这k个划分满足下列条件：</p>
+<p>​	每一个簇至少包含一个对象。</p>
+<p>​	每一个对象属于且仅属于一个簇。</p>
+<h4 id="k-means-算法"><a href="#k-means-算法" class="headerlink" title="k-means 算法"></a><strong>k-means 算法</strong></h4><ul>
+<li><strong>基本步骤</strong></li>
+</ul>
+<ol>
+<li><p>从n个数据对象任意选择 k 个对象作为初始聚类中心；</p>
+</li>
+<li><p>根据每个聚类对象的均值(中心对象)，计算每个对象与这些中心对象的距离；并根据最小距离重新对相应对象进行划分；</p>
+</li>
+<li><p>重新计算每个(有变化)聚类的均值(中心对象)；</p>
+</li>
+<li><p>计算标准测度函数，当满足一定条件，如函数收敛时，则算法终止；如果条件不满足则回到步骤2。</p>
+</li>
+</ol>
+<ul>
+<li><strong>主要缺点</strong></li>
+</ul>
+<p>​	在簇的平均值被定义的情况下才能使用，可能不适用于某些应用。</p>
+<p>​	必须事先给出<strong>k（要生成的簇的数目）</strong>，而且对初值敏感，对于不同的初始值，可能会导致不同结果。</p>
+<p>​	不适合于发现非凸面形状的簇或者大小差别很大的簇。而且，它对于“躁声”和孤立点数据是敏感的。</p>
+<ul>
+<li>k -means算法对于孤立点是敏感的。为了解决这个问题，我们引入了<strong>k-中心点算法，该算法不采用簇中的平均值作为参照点，可以选用簇中位置最中心的对象，即中心点作为参照点</strong>。</li>
+</ul>
+<img src="整理.assets/image-20231221170749676.png" alt="image-20231221170749676" style="zoom: 67%;" />
+
+<h4 id="PAM算法"><a href="#PAM算法" class="headerlink" title="PAM算法"></a>PAM算法</h4><ul>
+<li><p>PAM是最早提出的k-中心点算法之一，它选用簇中最中心的对象作为代表对象，试图对n个对象给出k个划分。</p>
+</li>
+<li><p>代表对象也被称为是中心点，其他对象则被称为非代表对象。</p>
+</li>
+<li><p>最初随机选择k个对象作为中心点，该算法<strong>反复地用非代表对象来代替中心点，试图找出更好的中心点，以改进聚类的质量</strong>。</p>
+</li>
+<li><p>为了判定一个非代表对象$Oh$是否可以替代当前一个代表对象$Oi$(中心点)，对于每一个对象$Oj$，下面的四种情况被考虑：</p>
+<p>第一种情况：$Oj$当前隶属于中心点对象$Oi$。如果$Oi$被$Oh$所代替作为中心点，且$Oj$离一个$Om$最近，$i≠m$，那么$Oj$被重新分配给$Om$。</p>
+<p>第二种情况：$Oj$当前隶属于中心点对象$Oi$。如果$Oi$被$Oh$代替作为一个中心点，且$Oj$离$Oh$最近，那么$Oj$被重新分配给$Oh$。</p>
+<p>第三种情况：$Oj$当前隶属于中心点$Om$，$m≠i$。如果$Oi$被$Oh$代替作为个中心点，而$Oj$依然离$Om$最近，那么对象的隶属不发生变化。</p>
+<p>第四种情况：$Oj$当前隶属于中心点$Om$，$m≠i$。如果$Oi$被$Oh$代替作为一个中心点，且$Oj$离$Oh$最近，那么$Oi$被重新分配给$Oh$</p>
+</li>
+<li><p>中心点是否应当被替换由代价函数决定，代价函数定义为</p>
+</li>
+</ul>
+<p>$$<br>TC_{ih}&#x3D;\sum_{j&#x3D;1}^nC_{jih}<br>$$</p>
+<p>​		其中，$C_{jih}$表示$O_j$在$O_i$被$O_h$代替后产生的代价</p>
+<h4 id="谱聚类算法"><a href="#谱聚类算法" class="headerlink" title="谱聚类算法"></a>谱聚类算法</h4><ul>
+<li><p>主要思想是把所有的数据看做空间中的点，这些点之间可以用边连接起来。距离较远的两个点之间的边权重值较低，而距离较近的两个点之间的边权重值较高，通过对所有数据点组成的图进行切图，让<strong>切图后不同的子图间边权重和尽可能的低，而子图内的边权重和尽可能的高</strong>，从而达到聚类的目的。</p>
+</li>
+<li><p><strong>无向权重图</strong></p>
+<p>谱聚类假设样本空间中的每个点都以一条<strong>无向边</strong>相连，整个样本空间便形成了一张图。</p>
+<p>构建邻接矩阵W的方法有三类。ϵ-邻近法，K邻近法和全连接法</p>
+</li>
+<li><p><strong>无向图切图</strong></p>
+</li>
+</ul>
+<p>​		$RatioCut(A_1,A_2,\ldots,A_k)&#x3D;\frac{1}{2}\sum_{k}^{i&#x3D;1}\frac{W(A_i,\bar{A}_i)}{|A_i|}$</p>
+<p>​		$NormalizeCut(A_1,A_2,\ldots,A_k)&#x3D;\frac{1}{2}\sum_{k}^{i&#x3D;1}\frac{W(A_i,\bar{A}<em>i)}{vol(A_i)}$，其中 $vol(A_i)&#x3D;\sum</em>{i\in A}d_i$</p>
+<ul>
+<li><strong>学习过程</strong></li>
+</ul>
+<p>​		1.计算权值矩阵$W&#x3D;[w_{ij}]<em>{N\times N}$,其中，$w</em>{ij}&#x3D;\exp\left(-\frac{|x_i-x_j|<em>2^2}{2\sigma^2}\right)$<br>​		2.计算度对角矩阵 $D&#x3D;diag(d_1,\ldots d_N)$ ,其中，$d_i&#x3D;\sum</em>{j&#x3D;1}^Nw_{ij}$                                                                                                                      		3.计算拉普拉斯矩阵 $L&#x3D;D-W$<br>​		4.计算$L$ (如果使用Ncut改进方案，这里输入的是$L$ 的标准化矩阵 $D^{-1&#x2F;2}LD^{-1&#x2F;2}&#x3D;\frac{L_{ij}}{\sqrt{d_id_j}}$) 的前 $k$ 个最小特征值对应的特征向量组			成的特征矩阵 $H^{\prime}&#x3D;[h_{ij}^{\prime}]_{N\times k^{\prime}}$ ,其中的每一行可以表示原样本空间中对应向量</p>
+<p>​		5.对 $H^{\prime}$ 进行Kmeans聚类，其聚类结果即为原样本空间的聚类结果</p>
+<ul>
+<li><strong>优点</strong></li>
+</ul>
+<p>​		谱聚类算法使用了降维的技术，所以更加适用于高维数据的聚类；</p>
+<p>​		谱聚类只需要数据之间的相似度矩阵，因此对于处理稀疏数据的聚类很有效。这点传统聚类算法（比如Kmeans）很难做到</p>
+<p>​		谱聚类算法建立在谱图理论基础上，与传统的聚类算法相比，它具有能在任意形状的样本空间上聚类且收敛于全局最优解</p>
+<ul>
+<li><strong>缺点</strong></li>
+</ul>
+<p>​		谱聚类适用于均衡分类问题，即各簇之间点的个数相差不大，对于簇之间点个数相差悬殊的聚类问题，谱聚类则不适用；</p>
+<p>​		如果最终聚类的维度非常高，则由于降维的幅度不够，谱聚类的运行速度和最后的聚类效果均不好；</p>
+<p>​		聚类效果依赖于相似矩阵，不同的相似矩阵得到的最终聚类效果可能很不同。</p>
+<h3 id="层次聚类"><a href="#层次聚类" class="headerlink" title="层次聚类"></a>层次聚类</h3><p><strong>分类</strong></p>
+<p><strong>凝聚</strong>的层次聚类：一种<strong>自底向上</strong>的策略，首先将每个对象作为一个簇，然后合并这些原子簇为越来越大的簇，直到某个终结条件被满足。代表为<strong>AGNES算法</strong>。</p>
+<p><strong>分裂</strong>的层次聚类：采用<strong>自顶向下</strong>的策略，它首先将所有对象置于一个簇中，然后逐渐细分为越来越小的簇，直到达到了某个终结条件。代表是<strong>DIANA算法</strong>。</p>
+<h4 id="AGNES算法"><a href="#AGNES算法" class="headerlink" title="AGNES算法"></a><strong>AGNES算法</strong></h4><ul>
+<li><p><strong>算法</strong></p>
+<p>输入<strong>：</strong>包含n个对象的数据库。</p>
+<p>输出<strong>：</strong>满足终止条件的若干个簇。</p>
+<p>(1) 将每个对象当成一个初始簇；</p>
+<p>(2) REPEAT</p>
+<p>(3) 计算任意两个簇的距离，并找到最近的两个簇；</p>
+<p>(4) 合并两个簇，生成新的簇的集合；</p>
+<p>(5) UNTIL 终止条件得到满足；</p>
+</li>
+<li><p>两个簇的<strong>距离</strong>可以通过以下定义得到</p>
+<p>最小距离 $d_{\min}(C_i,C_j)&#x3D;\min_{p\in C_i,q\in C_j}|p-q|$</p>
+<p>最大距离 $d_{\max}(C_i,C_j)&#x3D;\max_{p\in C_i,q\in C_j}|p-q|$</p>
+<p>均值距离 $d_{mean}(C_i,C_j)&#x3D;\left|\overline{p}-\overline{q}\right|$</p>
+<p>平均距离 $d_{avg}(C_i,C_j)&#x3D;\frac1{n_i.n_j}\sum_{p\in C_iq\in C_j}\lvert p-q\rvert $</p>
+<p>若采用最小距离的定义，簇与簇的合并方式称为单链接方法</p>
+</li>
+<li><p><strong>终止条件</strong></p>
+<p>设定一个最小距离阈值<em>D</em>，如果最相近的两个簇的距离已经超过D，则它们不需再合并，聚类终止。</p>
+<p>or限定簇的个数k，当得到的簇的个数已经达到k，则聚类终止。</p>
+</li>
+<li><p>假定在开始的时候有<em>n</em>个簇，在结束的时候有1个簇，因此在主循环中有n次迭代，在第i次迭代中，我们必须在n-i+1个簇中找到最靠近的两个聚类。另外算法必须计算所有对象两两之间的距离，因此这个算法的复杂度为 $O(n^2)$</p>
+</li>
+<li><p>ppt有例题</p>
+</li>
+</ul>
+<h4 id="DIANA算法"><a href="#DIANA算法" class="headerlink" title="DIANA算法"></a><strong>DIANA</strong>算法</h4><ul>
+<li><p>选择被分裂的簇可以使用簇的直径作为准则：</p>
+<p><strong>簇的直径</strong> $d_{\max}(C_i)&#x3D;\max_{p\in C_i,q\in C_j}|p-q|$</p>
+<p><strong>平均相异度</strong> $d_{avg}(p,C_i)&#x3D;\frac1{n_i}\sum_{q\in C_i}\lvert p-q\rvert $</p>
+</li>
+<li><p><strong>算法</strong></p>
+<p>(1)将所有对象整个当成一个初始簇；</p>
+<p>(2)REPEAT</p>
+<p>(3) 	在所有簇中挑出具有<strong>最大直径</strong>的簇C；</p>
+<p>(4) 	找出C中与其它点<strong>平均相异度最大</strong>的一个点p并把p放入splinter group，剩余的放在old party中；</p>
+<p>(5) 	REPEAT</p>
+<p>(6) 		在old party里选择点q，计算到splinter group中点的平均距离D1，计算q到old party中点的平均距离D2，保存D2-D1的值。</p>
+<p>(7) 		选择D1-D2取值最大的点$q’$，如果D1-D2为正，把$q’$分配到splintergroup中。</p>
+<p>(7) 	UNTIL 没有新的old party的点被分配给splinter group；</p>
+<p>(8) 	splinter group和old party为被选中的簇分裂成的两个簇，与其它簇一起组成新的簇集合。</p>
+<p>(9) END.</p>
+</li>
+<li><p>ppt有例题</p>
+</li>
+</ul>
+<h4 id="Birch算法"><a href="#Birch算法" class="headerlink" title="Birch算法"></a><strong>Birch</strong>算法</h4><ul>
+<li><p>简单来说，Birch 算法利用了一个树结构来帮助我们快速的聚类，这个特殊的树结构就是 <strong>聚类特征树（CF-tree）</strong></p>
+</li>
+<li><p>CF-tree的每个节点都可以用它的聚类特征(CF)表示,形式为$(N, \vec {LS}, SS)$，N为簇中样本的个数，LS为n个点的<strong>线性和</strong>，SS为样本的平方和。<br>$$<br>\vec {LS}&#x3D;\sum_{P_i\in N}\vec {P_i}\<br>SS&#x3D;\sum_{P_i\in N}|\vec{P_i}|^2<br>$$</p>
+</li>
+<li><p>聚类特征CF 具有<strong>可加性</strong>，即若簇A的特征为$(N_A, LS_A, SS_A)$，簇B的特征为$(N_B, LS_B, SS_B)$，合并以后的簇AB的特征为$(N_A+N_B，LS_A+LS_B，SS_A+SS_B)$</p>
+</li>
+<li><p><strong>算法步骤</strong></p>
+<p>BIRCH扫描数据库，建立一颗存放于内存的CF-树，它可以看作数据的多层压缩，试图保留数据内在的聚类结构。</p>
+<p>BIRCH采用某个(选定的)聚类算法对CF-树的叶子节点进行聚类，把稀疏的簇当做离群点删除，而把稠密的簇合并为更大的簇。</p>
+</li>
+<li><p><strong>CF树的参数</strong></p>
+<p><strong>枝平衡因子$β$<strong>，表示枝节点最大的孩子数，</strong>所有内部节点的分支不得多于 $β$ 个,</strong><br><strong>叶平衡因子$λ$，</strong>表示叶子节点允许包含的最大CF数；<br><strong>空间阈值 τ，</strong>表示 叶节点每个CF的最大样本半径或直径，<strong>所有类簇的半径不得大于 $τ$</strong></p>
+</li>
+<li><p><strong>CF 树构建</strong></p>
+<p>1、初始化枝平衡因子β，叶平衡因子λ和空间阈值τ；</p>
+<p>2、在数据库中逐个选取数据点，将数据点插入到CF树上：</p>
+<p>（i ）从根节点开始，自上而下选择最近的孩子节点</p>
+<p>（ii）到达叶子节点后，</p>
+</li>
+</ul>
+<img src="整理.assets/image-20231222170918531.png" alt="image-20231222170918531" style="zoom:77%;" />
+
+<p>​	3、更新每个非叶节点的CF信息，如果分裂节点，在父节点中插入新的元组，检查分裂，直到根节点</p>
+<ul>
+<li><p><strong>优点</strong></p>
+<ol>
+<li><strong>聚类速度快</strong>，只需要一遍扫描训练集就可以建立CF Tree，CF Tree的增删改都很快。</li>
+<li>可以<strong>识别噪音点</strong>，还可以对数据集进行初步分类的预处理</li>
+<li><strong>节省内存</strong></li>
+</ol>
+</li>
+<li><p><strong>缺点</strong></p>
+<ol>
+<li><strong>结果依赖于数据点的插入顺序</strong></li>
+<li>对高维特征的数据聚类效果不好。</li>
+<li><strong>对非球状的簇聚类效果不好</strong></li>
+</ol>
+</li>
+</ul>
+<h3 id="密度聚类"><a href="#密度聚类" class="headerlink" title="密度聚类"></a><strong>密度聚类</strong></h3><ul>
+<li><p><strong>指导思想</strong></p>
+<p><strong>只要一个区域中的点的密度大于某个域值，就把它加到与之相近的聚类中去</strong>。这类算法能克服基于距离的算法只能发现“类球形”的聚类的缺点，可发现任意形状的聚类，且对噪声数据不敏感。</p>
+</li>
+<li><p>但计算密度单元的计算复杂度大，需要建立空间索引来降低计算量，且对数据维数的伸缩性较差。</p>
+</li>
+<li><p>代表算法有：DBSCAN、OPTICS、DENCLUE算法等。</p>
+</li>
+</ul>
+<h4 id="DBSCAN算法"><a href="#DBSCAN算法" class="headerlink" title="DBSCAN算法"></a><strong>DBSCAN</strong>算法</h4><ul>
+<li><p>定义</p>
+<p>对象的<em>ε</em>-邻域：给定对象在半径<em>ε</em>内的区域。</p>
+<p><strong>核心对象</strong>：如果一个对象的<strong><em>ε</em>-临域至少包含最小数目MinPts个对象</strong>，则称该对象为核心对象。</p>
+<p><strong>直接密度可达</strong>：给定一个对象集合D，<strong>如果p是在q的ε-邻域内，而q是一个核心对象，我们说对象p从对象q出发是直接密度可达的</strong>。</p>
+<p>密度可达的：如果存在一个对象链$p1，p2，…，pn，p1&#x3D;q，pn &#x3D;p$，对$pi∈D，（1&lt;&#x3D;i&lt;&#x3D;n），pi+1$是从pi关于ε和MitPts直接密度可达的，则对象p是从对象q关于ε和MinPts密度可达的。</p>
+<p>密度相连的：如果对象集合D中存在一个对象o，使得对象p和q是从o关于ε和MinPts密度可达的，那么对象p和q是关于ε和MinPts密度相连的。</p>
+<p><strong>噪声</strong>: 一个基于密度的簇是基于密度可达性的最大的密度相连对象的集合。不包含在任何簇中的对象被认为是“噪声” 。</p>
+</li>
+</ul>
+<p><strong>简要步骤：</strong></p>
+<p>DBSCAN算法根据密度可达关系求出所有密度相连样本的最大集合，将这些样本点作为同一个簇。DBSCAN算法任意选取一个核心对象作为“种子”，然后从“种子”出发寻找所有密度可达的其他核心对象，并且包含每个核心对象的ε-邻域的非核心对象，将这些核心对象和非核心对象作为一个簇。当寻找完成一个簇之后，选择还没有簇标记的其他核心对象，得到一个新的簇，反复执行这个过程，直到所有的核心对象都属于某一个簇为止。</p>
+<p><strong>具体步骤：</strong></p>
+<ol>
+<li>初始化：选择两个参数，Epsilon（ε）和MinPts。<ul>
+<li>ε（Epsilon）：表示半径，它用于定义一个数据点的邻域范围。 ε 决定了数据点在 ε-邻域内有多少个邻居。</li>
+<li>MinPts：表示在 ε-邻域内至少应包含的数据点数量。MinPts 用于确定核心点（密度足够高的点）。</li>
+</ul>
+</li>
+<li><strong>选择起始点</strong>：从数据集中随机选择一个数据点作为起始点。</li>
+<li><strong>找到 ε-邻域</strong>：计算起始点到数据集中所有其他数据点的距离，并将距离小于 ε 的数据点视为起始点的 ε-邻域内的邻居。</li>
+<li><strong>核心点检测</strong>：如果 ε-邻域内的邻居数量不少于 MinPts，则将起始点标记为核心点。</li>
+<li>扩展簇：如果起始点是核心点，那么开始从它的 ε-邻域内扩展簇。具体步骤如下：<ul>
+<li>将起始点添加到当前簇中。</li>
+<li>对于 ε-邻域内的每个点，如果它是核心点，则将它的 ε-邻域内的邻居点也添加到当前簇中。</li>
+<li>递归地继续扩展簇，直到没有更多的核心点可以添加。</li>
+</ul>
+</li>
+<li><strong>找到下一个起始点</strong>：如果当前簇已扩展完毕，则从数据集中选择下一个未访问的核心点作为新的起始点，然后重复步骤 3 到步骤 5。</li>
+<li><strong>标记噪声点</strong>：所有未被分配到任何簇的数据点被视为噪声点。</li>
+<li><strong>结束</strong>：当所有数据点都被分配到簇或标记为噪声点时，DBSCAN算法结束。</li>
+</ol>
+<h4 id="OPTICS算法"><a href="#OPTICS算法" class="headerlink" title="OPTICS算法"></a>OPTICS算法</h4><p>在 DBSCAN 算法中，邻域参数(E，MimPts)是全局唯一的，当样本点的密度不均匀或聚类间相差很大时，聚类质量较差。此外，DBSCAN 算法对<strong>邻域参数(E，MinPts)非常敏感</strong>，需要由用户指定参数，参数设置的不同可能导致聚类结果差别很大，当用户不了解数据集特征时，很难得到良好的聚类结果。为了克服这些缺点，安克斯特(Ankerst) 等人提出了 OPTICS 算法。</p>
+<p>OPTICS 也是基于密度的聚类算法，但这一算法生成一个增广的簇排序，即所有分析对象的线性表，代表各样本点基于密度的聚类结构。从线性表的排序中可以得到基于任何邻域参数(E，MinPts)的 DBSCAN 算法的聚类结果。</p>
+<ul>
+<li><p><strong>重要概念</strong></p>
+<p><strong>核心距离</strong>：只有核心对象才能定义核心距离。对象p的核心距离是指是p成为核心对象的最小ε’ 。</p>
+<p><strong>可达距离</strong>：对象q到对象p的可达距离是指p的核心距离和p与q之间欧几里得距离之间的较大值。如果p不是核心对象，p和q之间的可达距离没有意义。</p>
+</li>
+<li><p><strong>算法</strong></p>
+<p><strong>输入：</strong> 数据集 D。 <strong>输出：</strong> 有序的输出结果队列 R，以及相应的可达性距离。 <strong>初始化：</strong>创建两个队列，有序队列 O 和结果队列 R。</p>
+<p>如果数据集 D 中还有未处理的点或者存在核心点，则执行以下步骤：</p>
+<ol>
+<li>选择一个未处理且为核心对象的样本点 P。<ul>
+<li>将 P 放入结果队列 R 中，并从数据集 D 中删除 P。</li>
+</ul>
+</li>
+<li>找到样本点 P 在数据集 D 中的所有密度直达样本点 X，并计算 X 到 P 的可达距离。<ul>
+<li>如果 X 不在有序队列 O 中，则将 X 及其可达距离放入 O 中。</li>
+<li>如果 X 已经在 O 中，检查如果 X 的新可达距离更小，则更新 X 的可达距离。</li>
+</ul>
+</li>
+<li>对有序队列 O 中的样本点按可达性距离从小到大进行排序。</li>
+<li>如果有序队列 O 为空，则跳至步骤 1</li>
+<li>如果有序队列 O 不为空，则执行以下步骤：<ol>
+<li>取出 O 中的第一个样本点 Y（即可达性距离最小的样本点）。<ul>
+<li>将 Y 放入结果队列 R 中，并从数据集 D 和有序队列 O 中删除 Y。</li>
+</ul>
+</li>
+<li><strong>如果 Y 不是核心对象，则执行以下步骤</strong>：<ul>
+<li>重复步骤 5.1（即找 O 中剩余数据可达性距离最小的样本点）。</li>
+</ul>
+</li>
+<li><strong>如果 Y 是核心对象，则执行以下步骤</strong>：<ul>
+<li>如果 Y 已经在结果序列中，则不处理</li>
+<li>找到 Y 在数据集 D 中的所有密度直达样本点（如果某些点已经在结果序列中则跳过），并计算到 Y 的可达距离。</li>
+<li>按照步骤 2 将所有 Y 的密度直达样本点更新到 O 中。</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>重复以上步骤，直到算法结束</li>
+</ol>
+</li>
+</ul>
+<h4 id="DENCLUE算法"><a href="#DENCLUE算法" class="headerlink" title="DENCLUE算法"></a><strong>DENCLUE算法</strong></h4><ul>
+<li><p>DENCLUE（Density-Based Clustering of Applications with Noise）是一种基于密度的聚类算法，用于在数据集中发现聚类簇和噪声点。该算法通过建模数据点的局部密度分布来识别聚类簇，并使用核密度估计来确定数据点的聚类结构。以下是DENCLUE算法的关键特点和步骤：</p>
+</li>
+<li><p>其核心思想可以概括为以下几点：</p>
+</li>
+</ul>
+<ol>
+<li><strong>影响函数（Influence Function）：</strong> DENCLUE将每个数据点的影响（影响其邻域的程度）形式化建模为一个数学函数，称为影响函数。这个函数描述了一个数据点对其周围邻域的影响程度，通常是一个随距离递减的函数。影响函数的选择可以根据问题的特性和数据的性质进行调整。</li>
+<li><strong>整体密度建模：</strong> DENCLUE通过将所有数据点的影响函数叠加在一起来建模数据空间的整体密度。这表示整体密度是由每个数据点的局部影响共同构成的，而不是简单地假定所有数据点具有相同的密度。这使得DENCLUE能够捕获数据集中不同区域的密度差异。</li>
+<li><strong>密度吸引点（Density Attractor）：</strong> 簇可以通过寻找全局密度函数的局部最大值来确定。在DENCLUE中，这些局部最大值被称为密度吸引点。密度吸引点表示数据集中的密度高点或局部聚类中心，因为它们是整体密度函数的局部极大值。DENCLUE的目标之一是识别这些密度吸引点，因为它们对应于聚类簇的核心。</li>
+</ol>
+<h3 id="其它聚类方法"><a href="#其它聚类方法" class="headerlink" title="其它聚类方法"></a>其它聚类方法</h3><h4 id="WaveCluster：小波变换聚类"><a href="#WaveCluster：小波变换聚类" class="headerlink" title="WaveCluster：小波变换聚类"></a>WaveCluster：小波变换聚类</h4><ul>
+<li><p>WaveCluster 是一种基于小波变换的聚类算法，旨在处理具有噪声和异常值的数据集。该算法利用小波变换技术来提取数据的特征，从而能够识别出不同尺度和密度的聚类簇。</p>
+</li>
+<li><p>既是基于网格的又是基于密度的</p>
+</li>
+</ul>
+<p><strong>主要特点：</strong></p>
+<ol>
+<li><strong>小波变换：</strong> WaveCluster 使用小波变换来分析数据的频率和尺度特征。小波变换是一种信号处理技术，可将数据转换为不同尺度上的频域信息，从而更好地捕获数据中的结构。</li>
+<li><strong>自适应阈值：</strong> WaveCluster 使用自适应阈值来检测噪声和异常值。这有助于排除不符合聚类结构的数据点，提高聚类的鲁棒性。</li>
+<li><strong>多尺度聚类：</strong> WaveCluster 能够识别不同尺度上的聚类结构，因此对于具有多个尺度的数据集特别有用。它可以处理具有不同密度和尺度的簇</li>
+</ol>
+<h2 id="网络舆情分析"><a href="#网络舆情分析" class="headerlink" title="网络舆情分析"></a><strong>网络舆情分析</strong></h2><h3 id="一、网络舆情概述"><a href="#一、网络舆情概述" class="headerlink" title="一、网络舆情概述"></a>一、网络舆情概述</h3><ul>
+<li><p>概念：网络舆情是指在互联网背景之下，众多网民关于社会（现实社会、虚拟社会）各种现象、问题所表达的信念、态度、意见和情绪表现的总和，或简言之为网络舆论和民情。</p>
+</li>
+<li><p>网络舆情的存活时间：大多集中在两周以内，如果回应不当，可能持续到21天左右。</p>
+</li>
+<li><p>网络舆情监控和预警</p>
+<ol>
+<li>发生期</li>
+<li>发酵期</li>
+<li>发展期</li>
+<li>高涨期</li>
+<li>回落期</li>
+<li>反馈期</li>
+</ol>
+</li>
+<li><p><strong>网络舆情的特点</strong></p>
+<ol>
+<li><p><strong>直接性</strong></p>
+<p>网络舆情不像报纸、杂志和电视，要经过报选题、采访、编辑、审稿、发布或者播放等几个环节，而网民发帖，就<strong>没有中间环节，很直接，随意性很强</strong>，网络舆情发生以后，网民可以直接通过网站论坛、微信、QQ空间、博客等载体立即发表意见</p>
+</li>
+<li><p><strong>突发性</strong></p>
+<p>就是无法预测，突然发生，网络舆论的形成往往非常迅速,一个热点事件的存在加上一种情绪化的意见,就可以成为点燃一片舆论的导火索。</p>
+</li>
+<li><p><strong>偏差性</strong></p>
+<p>就是所表达的观点，与实际不符合，由于发言者身份隐蔽，并且缺少规则限制和有效监督，网络自然成为一些网民发泄情绪的空间。</p>
+</li>
+</ol>
+</li>
+<li><p>组成部分：</p>
+<ol>
+<li><p>信源：事件。</p>
+<p>社会问题、个人意见、重大事件、社会心理、意见领袖引导是当今网络舆情的五大因素。</p>
+</li>
+<li><p>网民：网络舆情的传播者。</p>
+<p>网民是多种情绪、态度和意见的持有者, 其核心是社会政治态度。网民通过网络发表舆情言论成为引导和影响舆论的重要力量。网民是对民生、公民权利、公共治理最敏感、最敢言也最擅说话的人群，“网络舆论”可作为现实民意的风向标和参照系。</p>
+</li>
+</ol>
+</li>
+</ul>
+<h3 id="二、网络谣言"><a href="#二、网络谣言" class="headerlink" title="二、网络谣言"></a>二、网络谣言</h3><ul>
+<li><p>定义：广义：社会中出现并流传的未经官方公开证实或者已经被官方证伪了的信息。</p>
+<p>​			狭义：指没有事实根据的或凭空虚构的虚假信息。</p>
+</li>
+<li><p>网络谣言的传播速度更快、周期更短、波及范围更广、表现形式更多样、隐蔽性更强。</p>
+</li>
+<li><p>网络谣言的类型：</p>
+<ol>
+<li>政治谣言</li>
+<li>经济谣言</li>
+<li>军事谣言</li>
+<li>社会民生谣言</li>
+<li>自然现象谣言</li>
+</ol>
+</li>
+<li><p>生成原因：</p>
+<ol>
+<li>外部环境：国际局势错综复杂，政治谣言作为各方博弈的“攻心利器” ，在舆论场上屡见不鲜。</li>
+<li>社会治理中也不可避免地出现了某些诸如“落实依法行政不力”等公共管理失范现象，<strong>群体焦虑情绪易被放大</strong>。</li>
+<li>商业竞争激烈。</li>
+<li>媒体行业规范，部分媒体为在市场竞争中取得优势，未能严守新闻职业操守及行业规范， 导致报道失实。</li>
+<li>公民素养也是决定网络谣言产生及发酵程度的重要原因之一，即涉事主体信息公开程度越高，公民素养越高（识别信息真实性的能力越强），谣言产生的可能性就越小，谣言强度越弱。</li>
+</ol>
+</li>
+<li><p>谣言的强度&#x3D;事件的重要性×事件信息的模糊性÷公众批判能力。</p>
+</li>
+<li><p>鉴别方法：</p>
+<ol>
+<li>发布主体：信息转手次数越多，越容易失真，一手信源更容易辨别真伪。</li>
+<li>信息内容：时间地点人物清晰可回溯，信源多元均衡，核查物证，内容前后无矛盾。</li>
+</ol>
+</li>
+</ul>
+<h3 id="三、网络水军"><a href="#三、网络水军" class="headerlink" title="三、网络水军"></a>三、网络水军</h3><ul>
+<li><p>定义：传统的网络“水军”是指以获取收益为主要诉求，受雇于公关公司或者营销公司，在短时间内通过大量发帖、转帖、回帖等方式满足雇佣者建构舆论、制造荣誉或恶意抹黑的特定需求，是互联网时代背景与商业需求结合的产物，也是网络营销的常用手段之一。</p>
+</li>
+<li><p>随着人工智能等计算机技术的发展，机器人“水军”也应运而生。</p>
+</li>
+<li><p>运作模式：</p>
+<ol>
+<li>需求方：企业电商等</li>
+<li>中介方：公关公司、网络推广公司</li>
+<li>服务提供方：社会上闲散人员</li>
+</ol>
+</li>
+<li><p>危害：</p>
+<ol>
+<li>助推谣言发生</li>
+<li>制造大量网络噪声</li>
+<li>干扰正常社会生产秩序</li>
+<li>产生违法犯罪行为</li>
+</ol>
+</li>
+<li><p>类型：</p>
+<ol>
+<li>营销型</li>
+<li>公关型</li>
+<li>抹黑型</li>
+</ol>
+</li>
+<li><p>检测方法：</p>
+<ol>
+<li><p>文本内容特征：</p>
+<p>有强烈的情感倾向，水军群体活动多以评论转发点赞为主，主动发帖少，内容包含大量商业广告和垃圾信息</p>
+</li>
+<li><p>账号信息特征：</p>
+<p>账号创建时间短，名称随机，活动时间集中</p>
+</li>
+<li><p>用户关系特征：</p>
+<p>正常用户的常规活动会有与亲朋好友之间的互关、互动；而水军账号多是单向的，大范围关注正常账号但是回关概率低，并且关系紧密度低。</p>
+</li>
+</ol>
+</li>
+</ul>
+<h3 id="四、话题检测与跟踪"><a href="#四、话题检测与跟踪" class="headerlink" title="四、话题检测与跟踪"></a>四、话题检测与跟踪</h3><ol>
+<li><p>报道（Story）：指新闻文章或者新闻电视广播中的片段，至少包含一个完整的句子。通常情况下，一篇报道只描述一个话题，但是也有些报道涉及多个话题。</p>
+</li>
+<li><p>事件（Event）：事件是指发生在特定时间和地点的事情，涉及了某些人和物，并且可能产生某些必然的结果。</p>
+</li>
+<li><p>话题（topic）：一个话题由一个种子事件或活动以及与其直接相关的事件或活动组成。因此，也可以认为话题是一个相关事件的集合，或者是若干对某事件相关报道的集合。</p>
+</li>
+<li><p>主题（subject）：一类事件或话题的概括，它涵盖多个类似的具体事件，或者根本不涉及任何具体的事件，主题比话题的含义更广。</p>
+</li>
+<li><p><strong>话题检测与跟踪（topic detection and tracking,TDT）</strong>任务：</p>
+<ol>
+<li><p>报道切分（SST）</p>
+<p>一段报道可能包括多条新闻，需要切分</p>
+</li>
+<li><p>话题检测（TD）</p>
+<p>将讨论同一个话题的报道聚到同一个桶（bin）中，bin的创建为无监督。</p>
+<p>设计一个善于检测和识别所有话题的检测模型，并根据这一模型检测陆续到达的报道流，从中鉴别最新的话题；同时还需要根据已经识别到的话题，收集后续与其相关的报道。</p>
+</li>
+<li><p>首次报道检测任务（FSD）</p>
+<p>检测什么时候出现了一个新话题，这个话题以前没有报道过。</p>
+<p>FSD与TD面向的问题基本类似，但是 FSD 输出的是一篇报道，而TD输出的是一类相关于某一话题的报道集合。</p>
+</li>
+<li><p>话题跟踪（TT）</p>
+<p>给定某个话题的数篇相关报道，TT识别数据流中讨论该话题的后续报道。</p>
+</li>
+<li><p>关联检测（LD）</p>
+<p>给定两篇报道，判断其是否属于同一个话题。</p>
+</li>
+</ol>
+</li>
+</ol>
+<h4 id="4-1-话题表示与关联检测"><a href="#4-1-话题表示与关联检测" class="headerlink" title="4.1 话题表示与关联检测"></a>4.1 话题表示与关联检测</h4><p>话题表示模型主要采用文本表示模型。常用的模型分为<strong>向量空间模型和语言模型。</strong></p>
+<h5 id="1-向量空间模型"><a href="#1-向量空间模型" class="headerlink" title="1. 向量空间模型"></a>1. 向量空间模型</h5><ul>
+<li>这种模型基于词袋表示法，将文本中的词汇映射到高维向量空间中，其中每个维度对应一个词汇。</li>
+<li>常见的向量化方法包括词袋模型（Bag of Words, BoW）、TF-IDF（Term Frequency-Inverse Document Frequency）等。</li>
+<li>通过计算文本之间的向量相似度（如余弦相似度），可以用来衡量文本之间的关联程度。</li>
+</ul>
+<p>基于向量空间模型，判断两篇报道是否讨论了相同的话题或主题的步骤：</p>
+<ol>
+<li><strong>向量化报道</strong>：首先，将每篇报道表示为一个向量。这个向量通常是基于向量空间模型的表示，其中每个维度对应于文档中的一个特征或词项。这个向量可以使用词袋模型、TF-IDF权重或其他文本表示方法生成。</li>
+<li><strong>计算相似度</strong>：然后，使用向量余弦距离计算方法来度量两个报道向量之间的相似度。余弦距离是一种常用的相似度度量方法，它衡量了两个向量之间的夹角，从而表示它们在向量空间中的方向一致性。</li>
+<li><strong>设置阈值</strong>：在这个方法中，需要设定一个相似度阈值。这个阈值通常是一个预先定义的值，可以根据具体的任务和数据集进行调整。阈值的选择会影响最终的关联检测结果。</li>
+<li><strong>判断关联</strong>：最后，将计算得到的相似度与设定的阈值进行比较。如果两篇报道的相似度大于阈值，那么就认为它们讨论了相同的话题或主题，即它们具有关联性。反之，如果相似度小于阈值，那么就认为它们不讨论相同的话题。</li>
+</ol>
+<p>一篇报道和一个话题之间的相似度计算的核心问题确实涉及向量之间的相似度。在关联检测任务中，通常有两种主要方法来计算一篇报道和一个话题之间的相似度：</p>
+<ol>
+<li>计算报道与构成该话题的所有报道之间的相似度</li>
+<li>将话题表示成一个中心向量（话题模型）</li>
+</ol>
+<h5 id="2-语言模型"><a href="#2-语言模型" class="headerlink" title="2.语言模型"></a>2.语言模型</h5><p>使用Kullback-Leibler（K-L）距离是一种衡量两个概率分布之间差异或相似度的方法，可以用于计算报道与话题之间的相似度，特别是当将文本表示为概率分布时。</p>
+<p>以下是使用K-L距离计算报道与话题之间的相似度的一般步骤：</p>
+<ol>
+<li><p>文本表示成概率分布：</p>
+<p>首先，将报道和话题分别表示为概率分布。这可以通过词项的概率分布来实现，其中每个词项的概率表示在文本中出现的频率或权重。通常使用TF-IDF等方法来计算这些概率分布。</p>
+</li>
+<li><p>计算K-L距离：</p>
+<p>使用K-L距离公式计算报道分布（P）和话题分布（Q）之间的距离，公式如下所示：<br>$$<br>D_{KL}(P||Q)&#x3D;\sum P(x)\mathrm{log}\frac{P(x)}{Q(x)}<br>$$<br>其中，x代表不同的词项，P(x)是报道中词项x的概率，Q(x)是话题中词项x的概率。</p>
+</li>
+<li><p>相似度度量：</p>
+<p>K-L距离计算的结果是一个非负数，表示两个分布之间的差异。为了将其转化为相似度度量，可以考虑使用以下方法之一：</p>
+<ul>
+<li>可以使用K-L距离的倒数来得到相似性度量，即相似度 &#x3D; 1 &#x2F; (1 + K-L距离)。</li>
+<li>也可以使用指数函数对K-L距离进行转换，例如，相似度 &#x3D; exp(-K-L距离)。</li>
+</ul>
+</li>
+<li><p>阈值设定</p>
+</li>
+</ol>
+<p>需要注意的是，K-L距离在计算时要小心处理分布中的零概率问题，以及在面对长尾词汇时的平滑方法。</p>
+<p><strong>为了避免零概率问题，对概率值进行平滑处理</strong>：其中GE为语料库，TDT任务中报道是按时间顺序出现的，新的报道可能会出现历史报道中未曾出现过的词项，可以把它当做该词项的先验知识。</p>
+<h4 id="4-2-话题检测"><a href="#4-2-话题检测" class="headerlink" title="4.2 话题检测*"></a>4.2 话题检测*</h4><p>话题检测的目标是从连续的报道数据流中检测出<strong>新话题或者此前没有定义的话题</strong>。</p>
+<p>系统对于话题的主题内容、发生时间和报道数量等信息是未知的，也没有可以用于学习的标注样本。</p>
+<p>话题检测是一个<strong>无监督的学习任务</strong>，通常<strong>采用聚类</strong>算法来实现。</p>
+<p>话题检测通常分为：</p>
+<ul>
+<li><strong>在线检测</strong>（online detection，也称为新事件检测New eventdetection：NED）</li>
+<li><strong>回溯检测</strong>（retrospectivedetection：RED）</li>
+</ul>
+<h5 id="1-在线话题检测"><a href="#1-在线话题检测" class="headerlink" title="1. 在线话题检测"></a>1. 在线话题检测</h5><p><strong>采用增量式的在线聚类算法，即单遍聚类算法</strong>*（single-pass slustering）</p>
+<p>算法的主要步骤：</p>
+<ol>
+<li><strong>处理输入报道</strong>：算法按照报道的顺序逐一处理输入的报道。每篇报道被表示为一个向量，其中的特征项可以是报道中的词或短语，特征的权重使用TF-IDF或其变体进行计算。</li>
+<li><strong>计算相似度</strong>：对于每篇新报道，算法计算它与所有已知话题之间的相似度。这里的相似度是指新报道与话题的中心向量或平均向量之间的相似度。</li>
+<li><strong>归类报道</strong>：如果相似度值高于预设的<strong>合并阈值</strong>，就将新报道归类到与其相似度最高的话题中。这意味着新报道被认为与该话题相关。如果相似度值低于<strong>分裂阈值</strong>，算法将创建一个新的类簇来表示新话题，并将新报道放入该类簇中。如果处于两者之间，则不处理。</li>
+<li><strong>反复执行</strong>：重复执行上述步骤，处理每篇新报道，直到所有的报道都被处理一遍。</li>
+<li><strong>形成扁平聚类</strong>：最终，算法将形成一个扁平聚类，其中每个类簇代表一个话题或一个相关报道的集合。簇的个数取决于合并-分裂阈值的大小，较低的阈值可能导致更多的话题被检测到，而较高的阈值可能导致合并相似的话题。</li>
+</ol>
+<p>一些改进：</p>
+<ol>
+<li>每篇报道的内容被表示为一个查询，查询的特征项是动态变化的，是由数据流中所有已出现文档的前n个高频词组成的。随着时间的变化，以前所有的查询表示都需要在新的特征项上更新一遍。</li>
+<li>由于未来的报道在实时环境下是未知的，需要根据一个辅助语料c来 计算IDF，这个辅助语料要与当前检测的文本数据流属于同一个领域， 计算方法如下：</li>
+</ol>
+<p>$$<br>d_i&#x3D;0.4+0.6\cdot tf_i\cdot idf_i \<br>tf_i&#x3D;\frac{t_i}{t_i+0.5+1.5\cdot\frac{dl}{avg_dl}} \<br>idf_{i}&#x3D;\frac{\log\frac{|c|+0.5}{df_{i}}}{|c|+1}<br>$$</p>
+<p>​    	其中，$t_i$表示特征$q_i$ 在报道 d 中的词频，$dl$ 为报道 $d$ 的长度，$avg_dl$ 为辅助语料中的平均文档长度，$df_i$为特征$q_i$ 在 c 中的文档频     		率，$|c|$为语料 $c$ 包含的文档数。查询中特征$q_i$对应的权重是所有已出现报道中的$t_\mathrm{i}$的平均值。</p>
+<ol start="3">
+<li>进一步的研究表明，新闻报道的<strong>时间特征</strong>有助于提高在线话题检测的性能，数据流中<strong>时间接近的报道更有可能讨论相同的话题</strong>。因此，可以在阈值模型中增加时间惩罚因子，当第j篇报道与第i个查询（i&lt;j ）进行比较时，相应的阈值定义如下：</li>
+</ol>
+<p>$$<br>\theta(q^{(i)},d^{(j)})&#x3D;0.4+p\cdot(eval(q^{(i)},d^{(j)})-0.4)+tp\cdot(j-i)<br>$$<br>​		其中，$eval(q^{(i)},d^{(j)})$为查询$q^{(i)}$的初始阈值，$p$ 是初始阈值的权重参数，$tp$ 为时间惩罚因子的权重参数。</p>
+<ul>
+<li>单遍聚类算法对数据的输入顺序非常敏感，一旦数据的顺序发生改变，聚类结果可能会发生很大的改变。但是在TDT任务中，数据流中的报道顺序是确定的。</li>
+<li>单遍聚类算法具有<strong>原理简单、计算复杂度低、支持在线运算</strong>的优点</li>
+</ul>
+<h5 id="回溯话题检测"><a href="#回溯话题检测" class="headerlink" title="回溯话题检测"></a>回溯话题检测</h5><p>GAC（<strong>层次聚类算法</strong>）是一种自底向上的贪心算法，采用了分而治之的策略。能够最大化话题类簇中各新闻报道之间的平均相似度。输入为按照时间排序好的新闻文档集合，输出为<strong>层次式话题类簇结构</strong>。</p>
+<p>算法基本流程：</p>
+<ol>
+<li><p><strong>初始化</strong>：</p>
+<p>开始时，每篇文档被视为一个单独的话题类簇。</p>
+</li>
+<li><p><strong>桶的划分</strong>：</p>
+<p>将当前的话题类簇按照顺序连续划分到大小为m的”桶”中。这里的”桶”是一种临时容器，用于组织和处理话题类簇。</p>
+</li>
+<li><p><strong>桶内聚类</strong>：</p>
+<ul>
+<li>对每个桶中的话题类簇进行聚类操作。</li>
+<li>聚类的过程采用自底向上的方式，即逐步合并最相似的底层话题类簇，以形成一个高层次的话题类簇。合并是基于两个类簇之间的相似度来完成的。</li>
+<li>这个合并过程一直持续，直到达到预设的合并条件，可以是类簇数量减少的比例达到预设p，或者任何两个类簇之间的相似度值均低于一个预定义的阈值s。</li>
+</ul>
+</li>
+<li><p><strong>桶的边界去除</strong>：</p>
+<p>在保持各话题类簇事件顺序的前提下，去除桶的边界，将所有桶中的话题类簇汇集到一起。此时，得到了当前的类簇集合。</p>
+</li>
+<li><p><strong>重复步骤2-4</strong>：</p>
+<p>重复步骤2到步骤4，直到最顶层的话题类簇数目达到了预定的数值。</p>
+</li>
+<li><p><strong>定期重新聚类</strong>：</p>
+<p>定期对每个顶层类簇中的所有新闻文档进行重新聚类，按照前五步的方法。</p>
+</li>
+</ol>
+<h4 id="4-3-话题跟踪"><a href="#4-3-话题跟踪" class="headerlink" title="4.3 话题跟踪*"></a>4.3 话题跟踪*</h4><p>话题跟踪的主要任务是对特定话题进行追踪，即给定与<strong>特定话题相关的少量报道</strong>，检测出新闻报道流中与该话题相关的<strong>后续报道</strong>。</p>
+<p>从信息检索的角度来看，话题跟踪与信息过滤有一些相似之处，因此可以借鉴信息过滤中的查询方法来进行话题跟踪。以下是如何利用信息过滤的查询方法进行话题跟踪的一般步骤：</p>
+<ol>
+<li><p><strong>建立查询器</strong>：</p>
+<p>首先，需要建立一个查询器，用于表示待跟踪的话题。这个查询器的构建是基于话题的训练语料。训练语料包括一些已知与待跟踪话题<strong>相关的报道作为正例样本</strong>，以及<strong>其他不相关的报道作为负例样本</strong>。</p>
+<p>查询器的目标是捕捉与待跟踪话题相关的关键词、短语或特征。</p>
+<p>查询器的构件方法有两种：基于向量空间模型、基于语言模型</p>
+</li>
+<li><p><strong>计算相似度</strong>：</p>
+<p>对于每篇后续报道，使用建立的查询器来计算查询器与报道之间的相似度。这可以使用不同的相似性度量方法来实现，例如余弦相似度。</p>
+</li>
+<li><p><strong>相似度阈值</strong>：</p>
+<p>设定一个相似度阈值，用于判断报道是否属于待跟踪的话题。如果报道与查询器的相似度高于设定的阈值，那么可以认为这篇报道与待跟踪话题相关。</p>
+</li>
+<li><p><strong>跟踪与筛选</strong>：</p>
+<p>随着新报道的到来，计算它们与查询器的相似度，并与相似度阈值进行比较。如果相似度高于阈值，将报道纳入待跟踪话题的跟踪范围。否则，可以将其排除，认为不属于该话题。</p>
+</li>
+<li><p><strong>实时更新</strong>：</p>
+<p>设定一个查询器调整阈值，当报道相似度大于查询器调整阈值时，重构查询器以吸收该话题的重要特征，定期或实时地更新查询器，以适应话题的变化和演化。</p>
+</li>
+</ol>
+<p><strong>KNN算法基本步骤：</strong></p>
+<ol>
+<li>计算待测数据点与所有训练数据的距离；</li>
+<li>距离值递增排序；</li>
+<li>选出前K个最小距离；</li>
+<li>统计这K个距离值所对应的标签的频数；</li>
+<li>频数最大的标签即为预测类别。</li>
+</ol>
+<h3 id="五、社交网络突发事件检测"><a href="#五、社交网络突发事件检测" class="headerlink" title="五、社交网络突发事件检测"></a>五、社交网络突发事件检测</h3><p>社交媒体特征：</p>
+<ul>
+<li>微博短文本限制：140个字</li>
+<li>向量稀疏</li>
+<li>特征词的文档频数分布是一个长尾分布，大部分的特征词都只在较少的微博中出现</li>
+</ul>
+<p><strong>突发特征检测方法</strong>：</p>
+<ol>
+<li>假设检验方法：<ul>
+<li>这种方法假设在一个给定的时间窗口内，特征词的生成概率服从正态分布。</li>
+<li>特征词的频率如果大于某个阈值，而且在该时间窗口内处于突发状态的概率小于5%，则被认为是突发特征词。</li>
+</ul>
+</li>
+<li>引入能量值方法：<ul>
+<li>这个方法引入了能量值的概念，考虑了频率和发帖者的权威度。</li>
+<li>根据过去几个时间窗口内特征的权重值计算当前窗口内的能量值，增长速度越大，能量值越大。</li>
+<li>使用监督或无监督方法来根据能量值判断是否为突发特征词。</li>
+</ul>
+</li>
+<li>Kleinberg的方法：<ul>
+<li>Kleinberg提出了一种使用隐马尔科夫模型（HMM）来表示特征词生成过程的方法。</li>
+<li>特征词在每个时间窗口内都处于一个状态，并以相应的概率被生成。</li>
+<li>突发状态对应于高频率，状态之间的转移需要付出代价。</li>
+<li>通过Viterbi算法求解HMM，确定最可能的状态序列，从而检测突发特征词。</li>
+</ul>
+</li>
+</ol>
+<p><strong>事件监测</strong></p>
+<h2 id="第六章-社交网络分析"><a href="#第六章-社交网络分析" class="headerlink" title="第六章 社交网络分析"></a>第六章 社交网络分析</h2><h3 id="一、基本概念"><a href="#一、基本概念" class="headerlink" title="一、基本概念"></a>一、基本概念</h3><p>社交网络分析（Social Network Analysis, SNA）实际上就是利用<strong>网络科学理论</strong>来研究社会关系。其中，网络中的<strong>结点代表网络中的参与者</strong>（actor），结点之间的<strong>连线代表参与者之间的相互关系</strong>。</p>
+<p>SNA主要<strong>关注交互</strong>，而不是个体行为。</p>
+<p>SNA可用于分析网络的配置（configuration）如何影响个体和群体、组织或系统功能。</p>
+<p>主要研究包括：</p>
+<ul>
+<li>结点排序：研究结点相似度，之间可能存在连边</li>
+<li>链路预测：基于网络关系对缺失信息的还原、对将来信息的预测</li>
+<li>信息传播：研究信息的的传播模式和过程。包括影响力最大化、信息扩散模型等</li>
+</ul>
+<p>主要应用于：</p>
+<ul>
+<li>社交推荐</li>
+<li>舆情分析</li>
+<li>隐私保护</li>
+<li>用户画像</li>
+<li>可视化</li>
+</ul>
+<p>SNA的挑战：</p>
+<ul>
+<li>需要在本地、特定于客户的信息与网络信息之间找到正确的平衡</li>
+<li>需要同时推断所有节点行为的过程（集体推理程序）</li>
+<li>训练和测试集不易分离</li>
+</ul>
+<h3 id="二、结点排序"><a href="#二、结点排序" class="headerlink" title="二、结点排序"></a>二、结点排序</h3><p>社交网络分析的核心问题是如何识别网络中的<strong>重要结点</strong>。 重要结点是指相比网络中其他结点而言能够在更大程度上影响网络结构特征与功能的一些特殊结点。 重要结点的数量一般非常少，但其影响可以快速传播到网络中的大多数结点。</p>
+<h4 id="2-1-基于结点近邻的排序方法"><a href="#2-1-基于结点近邻的排序方法" class="headerlink" title="2.1 基于结点近邻的排序方法"></a>2.1 基于结点近邻的排序方法</h4><p>最简单、最直观的方法：度中心性、K-壳分解</p>
+<h5 id="1-度中心性"><a href="#1-度中心性" class="headerlink" title="1. 度中心性"></a>1. <strong>度中心性</strong></h5><p>在社交网络分析中，结点的重要性也称中心性，其主要观点是结点的重要性等价于该结点与其他结点的连接使其具有的显著特性。度中心性认为<strong>一个结点的邻居数目越多，其影响力就越大，</strong>这是网络中刻划结点重要性最简单的指标。</p>
+<p>在有向图中，度中心性还需考虑结点的入度和出度。在带权网络中，还需考虑权重值。总的来讲，度中心性刻划的是结点的直接影响力，它认为一个结点的度越大，能直接影响的邻居就越多，换句话说就是该结点越重要。</p>
+<h5 id="2-K-壳分解"><a href="#2-K-壳分解" class="headerlink" title="2. K-壳分解"></a>2. <strong>K-壳分解</strong></h5><p>此方法将外围的结点层层剥去，处于内层的结点拥有较高的影响力。</p>
+<ol>
+<li><p><strong>初始化</strong>：</p>
+<p>假设网络中不存在度数为0的孤立结点。度数为1的结点是网络中最不重要的结点，首先从网络中删除度数为1的节点及其边。</p>
+</li>
+<li><p><strong>迭代过程</strong>：</p>
+<p>循环执行以下步骤，直到网络中不再存在度数为1的节点：</p>
+<ul>
+<li><ol>
+<li>从网络中删除度数为1的节点及其边。</li>
+</ol>
+</li>
+<li><ol>
+<li>检查删除操作后是否会产生新的度数为1的节点。</li>
+</ol>
+</li>
+<li><ol>
+<li>如果有新的度数为1的节点出现，继续执行步骤a；否则，执行下一步。</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p><strong>确定第一层（1-shell）</strong>：</p>
+<p>所有被删除的节点构成了第一层，其Ks值等于1。此时，剩余网络中的每个节点的度至少为2。</p>
+</li>
+<li><p><strong>继续迭代</strong>：</p>
+<p>重复上述迭代过程，依次删除度数为1的节点，构建第二层（2-shell），第三层（3-shell），以此类推，直到网络中的所有节点都获得了Ks值。</p>
+</li>
+</ol>
+<h4 id="2-2-基于路径的排序方法"><a href="#2-2-基于路径的排序方法" class="headerlink" title="2.2 基于路径的排序方法"></a>2.2 基于路径的排序方法</h4><h5 id="1-接近中心性"><a href="#1-接近中心性" class="headerlink" title="1. 接近中心性"></a>1. <strong>接近中心性</strong></h5><p>接近中心性通过计算结点与网络中其他所有结点的距离的平均值来消除特殊值的干扰。</p>
+<p>一个结点与网络中其他结点的<strong>平均距离越小</strong>，该结点的接近中心性就越大。 接近中心性也可以理解为利用信息在网络中的平均传播时长来确定结点的重要性。</p>
+<p>计算任意一个结点 $v_i$ 到其他结点的平均距离：<br>$$<br>d_i&#x3D;\frac1{n-1}\sum_{j≠i}d_{ij}<br>$$<br>把$d_i$的倒数定义为结点$v_i$的接近中心性：</p>
+<p>$$<br>C(i)&#x3D;\sum_{j-1}^n\frac1{d_{ij}}<br>$$<br>缺点：时间复杂度比较高。</p>
+<h5 id="2-Katz中心性"><a href="#2-Katz中心性" class="headerlink" title="2. Katz中心性"></a>2. <strong>Katz中心性</strong></h5><p>Katz中心性是一种用于分析网络中节点重要性的中心性度量方法。与接近中心性不同，Katz中心性不仅考虑节点之间的最短路径，<strong>还考虑它们之间的其他非最短路径</strong>。这个度量方法利用一个参数s（s ∈ (0, 1)）来衡量路径的权重，其中s是一个固定参数。<br>$$<br>K&#x3D;sA+s^2A^2+\cdots+s^pA^p+\cdots&#x3D;(I-sA)^{-1}-I<br>$$<br>Katz中心性的计算基于网络中的路径关系矩阵，其中l(p)ij表示从节点vi到vj经过长度为p的路径的数目。通常，路径越短，权重越大。这种中心性度量方法可以用于识别网络中的重要节点，它不仅考虑节点的直接连接，还考虑了间接连接和多跳路径，因此对于复杂网络的分析非常有用。但是时间复制度仍很高。</p>
+<h5 id="3-介数中心性"><a href="#3-介数中心性" class="headerlink" title="3. 介数中心性"></a>3. <strong>介数中心性</strong></h5><p>通常提到的介数中心性一般指最短路径介数中心性（shortest path BC），它认为网络中所有结点对的最短路径中，经过一个结点的最短路径数越多，这个结点就越重要。</p>
+<p>介数中心性指的是<strong>结点充当两个结点之间的短路路径的次数</strong>。<strong>结点充当“中介”的次数越多，介数中心性就越大。</strong></p>
+<h4 id="2-3-基于特征向量的排序方法"><a href="#2-3-基于特征向量的排序方法" class="headerlink" title="2.3 基于特征向量的排序方法"></a>2.3 基于特征向量的排序方法</h4><p>前述方法主要从<strong>邻居的数量</strong>上考虑对结点重要性的影响，基于特征向量的方法同时考虑了结点<strong>邻居数量和其质量</strong>两个因素。</p>
+<h5 id="1-特征向量中心性"><a href="#1-特征向量中心性" class="headerlink" title="1. 特征向量中心性"></a>1. <strong>特征向量中心性</strong></h5><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/vincent_duan/article/details/119872349">特征向量中心性-CSDN</a></p>
+<p>特征向量中心性认为一个结点的重要性既取决于其<strong>邻居结点的数量</strong>(该结点的度)，也取决于每个<strong>邻居结点的重要性</strong>。即：𝒙是邻接矩阵𝐴的特征向量。特征向量中心性定义为网络邻接矩阵的主特征向量。</p>
+<p><a target="_blank" rel="noopener" href="http://typora-win11.oss-cn-beijing.aliyuncs.com/typora-img/2023/12/18/20231218-224651.png"><img src="http://typora-win11.oss-cn-beijing.aliyuncs.com/typora-img/2023/12/18/20231218-224651.png" alt="img" style="zoom:67%;" /></a></p>
+<h5 id="2-PageRank算法"><a href="#2-PageRank算法" class="headerlink" title="2. PageRank算法"></a>2. <strong>PageRank算法</strong></h5><p>PageRank是一种度量结点间传递影响或连通性的算法，可以通过在相邻结点上迭代分配一个结点的秩来计算，也可以通过随机遍历图并计算在这些遍历过程中到达每个结点的频率来计算。</p>
+<h3 id="三、链路预测"><a href="#三、链路预测" class="headerlink" title="三、链路预测"></a>三、链路预测</h3><p>链路预测处理的是信息科学中最基本的问题——<strong>缺失信息的还原与预测</strong>。</p>
+<p>链路预测根据某一时刻可用的结点及结构信息，来预测结点和结点之间出现链路的概率。链路预测任务实际上可被分为两类：</p>
+<ul>
+<li>第一类是预测新链路将在未来出现的可能性，</li>
+<li>第二类是预测当前网络结构中存在的缺失链路的可能性。</li>
+</ul>
+<h4 id="3-1-基于结点属性的相似性指标"><a href="#3-1-基于结点属性的相似性指标" class="headerlink" title="3.1 基于结点属性的相似性指标"></a>3.1 基于结点属性的相似性指标</h4><p>前提假设是<strong>两个结点之间的相似性越大</strong>，两个结点之间<strong>存在链路的可能性越大</strong>。</p>
+<p>有许多方法可以表示结点相似性，但最简单的方法是使用结点属性。如果他们具有相同的年龄、性别、职业和兴趣，则他们之间的相似性非常大。</p>
+<h4 id="3-2-基于局部信息的相似性指标"><a href="#3-2-基于局部信息的相似性指标" class="headerlink" title="3.2 基于局部信息的相似性指标"></a>3.2 基于局部信息的相似性指标</h4><p>基于网络结构相似性的方法假设为：在网络中，<strong>两个结点之间相似性（或相近性）越大</strong>，它们之间存在连边的<strong>可能性就越大</strong>。</p>
+<h5 id="1-优先连接指标（preferential-attachment，PA）"><a href="#1-优先连接指标（preferential-attachment，PA）" class="headerlink" title="1. 优先连接指标（preferential attachment，PA）"></a>1. 优先连接指标（preferential attachment，PA）</h5><p>优先连接方法的主要思想是：在网络中，一条即将加入的新边<strong>连接到结点x的概率正比于结点x的度</strong>，从而在结点x和结点y之间<strong>产生一条链路的可能性正比于两结点度的乘积</strong>，即：</p>
+<h5 id="2-共同邻居指标（common-neighbor，CN）"><a href="#2-共同邻居指标（common-neighbor，CN）" class="headerlink" title="2.共同邻居指标（common neighbor，CN）"></a>2.共同邻居指标（common neighbor，CN）</h5><p>共同邻居定义<strong>两个结点产生链路的可能性正比于它们之间的共同邻居的数量</strong>。</p>
+<h5 id="3-AA指标"><a href="#3-AA指标" class="headerlink" title="3. AA指标"></a>3. AA指标</h5><p>他们根据共同邻居结点的度为每个结点赋予一个权重值，该权重等于该结点的度的对数分之一，从而<strong>AA 指标就等于两个结点的所有共同邻居的权重值之和。</strong></p>
+<h5 id="4-资源分配指标（resource-allocation，RA）"><a href="#4-资源分配指标（resource-allocation，RA）" class="headerlink" title="4. 资源分配指标（resource allocation，RA）"></a>4. 资源分配指标（resource allocation，RA）</h5><p>此方法假设每个结点都有一个资源单元，它将这些资源平均分配给它的邻居。</p>
+<p>在没有直接连接的结点对vx和vy中，结点vx可以通过它们的共同邻居（kz为共同邻居结点的度，Tx为vx的邻居结点的集合）将一些资源分配给结点vy。因此，结点vx和vy的相似性可以定义为结点vy从结点vx获得的资源数量。</p>
+<p>RA和AA的区别在于赋予共同邻居结点权重的方式不同。AA 以$\frac1{logk}$ 的形式递减，RA以 $\frac1{k}$ 的形式递减。</p>
+<h4 id="3-3-基于路径的相似性指标"><a href="#3-3-基于路径的相似性指标" class="headerlink" title="3.3 基于路径的相似性指标"></a>3.3 基于路径的相似性指标</h4><h5 id="1-路径指标LP（local-path）"><a href="#1-路径指标LP（local-path）" class="headerlink" title="1. 路径指标LP（local path）"></a>1. 路径指标LP（local path）</h5><p>同邻居指标可以看成考虑两个结点间的二阶路径数目的方法，如果在二阶路径基础上再考虑结点间的三阶路径数，就可以得到局部路径指标LP，定义为：<br>$$<br>S&#x3D;A^2+\alpha A^3<br>$$<br>其中，α为可调参数，A表示网络的邻接矩阵，$A^2$和$A^3$则表示结点之间长度为2和3的路径的个数。</p>
+<p>当α&#x3D;0，LP指标就退化为CN指标，CN指标本质上也可以看成基于路径的指标，只是它只考虑二阶路径数目。</p>
+<h3 id="四、信息扩散模型"><a href="#四、信息扩散模型" class="headerlink" title="四、信息扩散模型"></a>四、信息扩散模型</h3><h4 id="1-线性阈值模型（Linear-Threshold-Model）"><a href="#1-线性阈值模型（Linear-Threshold-Model）" class="headerlink" title="1. 线性阈值模型（Linear Threshold Model）"></a>1. 线性阈值模型（Linear Threshold Model）</h4><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/yanFlyBlog/articles/14741664.html">线性阈值模型( Linear Threshold Model) - 独立级联模型(Independent Cascade Model) - 言非 - 博客园</a></p>
+<p>该模型表明：<strong>如果一个用户的采取行动的朋友的数量超过某个阈值，那么该用户才采取行动。</strong></p>
+<p>在线性阈值模型(Linear Threshold Model，LTM)中，每个结点 V 在0~1内均匀分布随机抽取一个阈值$ϴ_v$ 。阈值$ϴ_v$表示为了激活结点V，<strong>结点 V 的朋友需要被激活的比例</strong>。</p>
+<h4 id="2-独立级联模型（Independent-Cascade-Model）"><a href="#2-独立级联模型（Independent-Cascade-Model）" class="headerlink" title="2. 独立级联模型（Independent Cascade Model）"></a>2. 独立级联模型（Independent Cascade Model）</h4><p>独立级联模型( Independent Cascade Model，ICM）借鉴了交互粒子系统（ interac-ting particle)和概率论的理念。</p>
+<p>与线性阈值模型不同，该模型关注信息的发送者( sender）胜过信息的接收者（receiver)。</p>
+<p>在独立级联模型中，一个 结点w 一旦在 第t步 被激活，它<strong>只有一次机会激活它的邻接结点</strong>。 对于其 邻接结点v ，其被 结点w 激活的概率为 $P_{w,v}$。</p>
+<p>如果 v 被成功地激活，那么 v 就是 第 t+1 步 被激活的结点。在往后的信息扩散过程中, w 将不再试图去激活它其余的邻接结点。</p>
+<p>在独立级联模型中，信息扩散过程与线性阈值模型的信息扩散过程相同，都从一个初始活动的结点集合开始，直到没有结点可以被激活而结束。</p>
+<p>区别：</p>
+<p><strong>线性阈值模型</strong></p>
+<ul>
+<li>以接收者为中心(receiver-centered)，通过观察一个结点的所有邻接结点，根据该结点的阈值决定是否可以激活该结点;</li>
+<li>结点的激活依赖于一个结点的全部邻接结点;</li>
+<li>一旦给定线性阈值模型中的阈值，网络中的信息扩散过程也就<strong>确定</strong>了。</li>
+</ul>
+<p><strong>独立级联模型</strong></p>
+<ul>
+<li>以发送者为中心（sender-cen-tered)。当一个结点被激活后，它试图去激活它的所有邻接结点；</li>
+<li>一个结点独立地激活其所有的邻接结点（不一定都被激活)；</li>
+<li>信息扩散的过程随信息的级联过程（cascading process）而变。网络中的信息扩散过程<strong>不确定</strong>了。</li>
+</ul>
+<h4 id="3-影响力最大化问题"><a href="#3-影响力最大化问题" class="headerlink" title="3. 影响力最大化问题"></a>3. 影响力最大化问题</h4><p>影响力最大化关注的核心问题是在一个给定的网络中找到一个最优的节点集合（称为种子集合），使得<strong>通过这些节点启动的信息传播能够影响尽可能多的其他节点</strong>。</p>
+<p>影响力最大化问题通常通过贪心算法进行求解，其步骤大致如下：</p>
+<ol>
+<li><strong>初始化种子集合</strong>：起始时种子集合为空。</li>
+<li><strong>迭代选择节点</strong>：分多轮进行，每轮从网络中选择一个能带来最大影响力增量的节点加入到种子集合中。</li>
+<li><strong>评估影响力</strong>：使用特定的信息扩散模型（如独立级联模型或线性阈值模型）来评估加入新节点后种子集合的影响力。</li>
+<li><strong>重复直至满足条件</strong>：一般是迭代次数，或种子集合达到预定大小。</li>
+</ol>
+<h4 id="4-感染模型"><a href="#4-感染模型" class="headerlink" title="4. 感染模型"></a>4. 感染模型</h4><p>感染模型常用的有：</p>
+<ul>
+<li>Susceptible-Infected-Recovered (SIR) 模型</li>
+<li>Susceptible-Infected-Susceptible (SIS) 模型</li>
+</ul>
+<p>这个模型将人群分为三个部分：易感者（Susceptible）、感染者（Infected）、和移除者（Recovered或Removed）。</p>
+<p><strong>组件解释：</strong></p>
+<ol>
+<li>**易感者 (S)**：这部分人群尚未感染疾病，但由于没有免疫力，他们有可能被感染。在信息传播的背景下，这些人尚未接收到特定信息。</li>
+<li>**感染者 (I)**：这部分人群已经感染疾病，并且具有传播病原体给易感者的能力。在信息传播的背景下，这些人已经接收到信息，并且可能将信息传播给其他人。</li>
+<li>**移除者 (R)**：这部分人群曾经感染过疾病，但现在已经康复，获得免疫力，不再传播病原体。在信息传播的背景下，这些人可能已经失去传播信息的兴趣或能力。</li>
+</ol>
+<p><strong>关键参数：</strong></p>
+<ul>
+<li><strong>感染率（β）</strong>：易感者变成感染者的速率。这通常与感染者的密度和两者之间的接触频率有关。</li>
+<li><strong>恢复率（γ&#x2F;δ）</strong>：感染者变成移除者的速率。这个率反映了病程的平均持续时间。</li>
+</ul>
+<h4 id="5-SIR模型"><a href="#5-SIR模型" class="headerlink" title="5. SIR模型"></a>5. SIR模型</h4><p>SIR适用于对每个人<strong>一生中只能感染一次的病毒</strong>进行建模。</p>
+<p><strong>算法过程：</strong></p>
+<ol>
+<li><p>初始化状态</p>
+<p>所有节点分为三种状态：易感者（S），感染者（I），和移除者（R）。</p>
+<p>初始时，部分节点被设定为感染状态（I），其他节点为易感状态（S）。</p>
+<p>移除状态（R）的节点初始时数量为零。</p>
+</li>
+<li><p>模拟传播</p>
+<p>对于每一个时间步长（step）：</p>
+<p>遍历所有处于感染状态（I）的节点。</p>
+<p>对于每个感染节点：</p>
+<ul>
+<li>遍历其所有易感（S）状态的邻居节点。<ul>
+<li>对每个易感邻居，有概率 <em>p</em> 使其变为感染状态（I）。这个概率 <em>p</em> 代表传染概率。</li>
+<li>每个感染节点在感染状态保持 <em>t</em> 个时间步长。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>更新状态</p>
+<p>对于处于感染状态（I）的节点，跟踪其在感染状态下经过的时间步长。</p>
+<p>一旦某个感染节点在感染状态保持了 <em>t</em> 个时间步长，将其状态更新为移除状态（R）。</p>
+<p>进入移除状态（R）的节点不再参与传播过程，也不会再被感染。</p>
+</li>
+<li><p>迭代</p>
+<p>重复步骤2和步骤3，直到达到预设的模拟时间，或者直到没有更多的感染状态（I）的节点。</p>
+</li>
+</ol>
+<h4 id="6-SIS模型"><a href="#6-SIS模型" class="headerlink" title="6. SIS模型"></a>6. SIS模型</h4><p>在SIS模型中，恢复的节点立即再次变得易感。</p>
+<p>病毒 “strength”: s&#x3D; β&#x2F; δ</p>
+<h2 id="第七章-图像特征提取"><a href="#第七章-图像特征提取" class="headerlink" title="第七章 图像特征提取"></a>第七章 图像特征提取</h2><ol>
+<li><p>图像内容识别：感知 ➡ 预处理 ➡ 特征提取 ➡ 分类</p>
+</li>
+<li><p>特征提取：将原始数据转换为适合计算机处理的格式。包括特征检测和特征描述两部分。</p>
+</li>
+<li><p>特征：待标记或区分的明显属性或描述。</p>
+</li>
+<li><p>种类：</p>
+<p>​	应用对象：像素特征、纹理特征、区域特征、关键点特征</p>
+<p>​	特征范围：局部特征、全局特征</p>
+</li>
+</ol>
+<h3 id="一、像素特征"><a href="#一、像素特征" class="headerlink" title="一、像素特征"></a>一、像素特征</h3><ol>
+<li>RGB色彩空间</li>
+<li>HSI色彩空间（色调、饱和度、亮度）</li>
+<li>两者之间的转化</li>
+</ol>
+<h3 id="二、纹理特征"><a href="#二、纹理特征" class="headerlink" title="二、纹理特征"></a>二、纹理特征</h3><h4 id="2-1-共生矩阵描述子"><a href="#2-1-共生矩阵描述子" class="headerlink" title="2.1 共生矩阵描述子"></a>2.1 共生矩阵描述子</h4><p>Q是定义两个像素相对位置的一个算子。</p>
+<p>G是一个矩阵（共生矩阵），gij表示图像中zi和zj像素在Q规定的位置上出现的次数。</p>
+<p>例如：Q的定义是“右边的一个像素” (即一个像素的相邻像素定义为其右侧的一个像素)</p>
+<p><img src="http://typora-win11.oss-cn-beijing.aliyuncs.com/typora-img/2023/12/20/20231220-083010.png" alt="img"></p>
+<p>共生矩阵描述子，用于描述共生矩阵的统计特性。从而进一步计算最大概率、相关、对比度、能量、同质、熵等。</p>
+<p><strong>能量：</strong>是图像灰度分布均匀性的度量。<strong>灰度共生矩阵元素值的平方和</strong><br>$$<br>E&#x3D;\sum_i^K\sum_j^Kp_{ij}^2<br>$$<br><strong>熵：</strong>是图像所具有的信息量的度量。若图像没有任何纹理，则熵值几乎为零，若细纹理多，则熵值较大。<br>$$<br>H&#x3D;-\sum_{i&#x3D;1}^K\sum_{j&#x3D;1}^Kp_{ij}log_2{p_{ij}}<br>$$<br><strong>对比度</strong>：图像的对比度可以理解为图像的清晰度。在图像中，纹理的沟纹越深，则其对比度I越大，图像越清晰。<br>$$<br>I&#x3D;\sum_{i&#x3D;1}^K\sum_{j&#x3D;1}^K{(i-j)^2p_{ij}}<br>$$</p>
+<h4 id="2-2-局部二值模式（LBPs）"><a href="#2-2-局部二值模式（LBPs）" class="headerlink" title="2.2 局部二值模式（LBPs）"></a>2.2 局部二值模式（LBPs）</h4><p><strong>定义</strong>：在一个3*3区域中，将四周八个亮度<strong>大于等于中心的记为1，小于的记为0</strong>。周围八个01字符按照某顺序(从左上角顺时针)排列后得到一个8位的01串，转换为十进制后得到一个用来表示局部纹理模式的数值。</p>
+<p><strong>圆形LBP算子：</strong></p>
+<p>​    基本的 LBP算子的最大缺陷在于它只覆盖了一个固定半径范围内的小区域，这显然不能满足不同尺寸和频率纹理的需要。为了适应不同尺度的纹理特征，并达到灰度和旋转不变性的要求，Ojala等对 LBP算子进行了改进，将 3×3邻域扩展到任意邻域，并用圆形邻域代替了正方形邻域，改进后的 LBP算子允许在半径为 R 的圆形邻域内有任意多个像素点。从而得到了诸如半径为R的圆形区域内含有P个采样点的LBP算子；</p>
+<img src="整理.assets/image-20231224143541973.png" alt="image-20231224143541973" style="zoom:50%;" />
+
+<p><strong>旋转不变性</strong>：对01串不断进行循环右移，得到<strong>值最小的一个</strong>。</p>
+<p>在利用像素LBP来表达区域特征的应用中的应用中，一般都不将LBP图谱作为特征向量用于分类识别，而是采用LBP特征谱的统计直方图作为特征向量用于分类识别。</p>
+<h3 id="三、区域特征"><a href="#三、区域特征" class="headerlink" title="三、区域特征"></a>三、区域特征</h3><h4 id="3-1-梯度方向直方图-HOG"><a href="#3-1-梯度方向直方图-HOG" class="headerlink" title="3.1 梯度方向直方图-HOG"></a>3.1 梯度方向直方图-HOG</h4><p>算法步骤：</p>
+<ol>
+<li><p>确定窗体、块的大小和形状</p>
+</li>
+<li><p>全局光度归一化</p>
+<p>为了减少光照影响，处理光线太暗或太强的情况，需要将整个图像进行归一化处理：灰度化和Gamma校正。在图像的纹理强度中，局部的表层曝光贡献的比重较大，这种处理能够有效地降低图像局部的阴影和光照变化。</p>
+</li>
+<li><p><strong>计算方向直方图</strong></p>
+<p>在每个像素处，梯度有一个大小和一个方向。x方向梯度图会强化垂直边缘特征，y方向梯度图会强化水平边缘特征。这就使得有用的特征（轮廓）得到保留，无关不重要的信息被去除。</p>
+<p>水平梯度&#x3D;右-左；垂直梯度&#x3D;下-上   </p>
+<p>梯度强度值$g&#x3D;\sqrt{g_x^2+g_y^2}$</p>
+</li>
+<li><p><strong>构建方向直方图</strong>*</p>
+<p>把整个图像划分为若干个8x8的小单元，称为cell，并计算每个cell的梯度直方图。</p>
+<p>将角度范围分成9份，也就是9 bins，每20°为一个单元，也就是这些像素可以根据角度分为9组。将每一份中所有像素对应的梯度值进行累加，可以得到9个数值。直方图就是由这9个数值组成的数组，对应于角度0、20、40、60… 160。</p>
+<img src="整理.assets/image-20231224151602139.png" alt="image-20231224151602139" style="zoom:80%;" />
+
+<p>比如上面方向图中蓝圈包围的像素，角度为80度，这个像素对应的幅值为2，所以在直方图80度对应的bin加上2。红圈包围的像素，角度为10度，介于0度和20度之间，其幅值为4，那么这个梯度值就被按比例分给0度和20度对应的bin，也就是各加上2。</p>
+<p>还有一个细节需要注意，如果某个像素的梯度角度大于160度，也就是在160度到180度之间，那么把这个像素对应的梯度值按比例分给0度和160度对应的bin。</p>
+<p>将这 8x8 的cell中所有像素的梯度值加到各自角度对应的bin中，就形成了长度为9的直方图。</p>
+</li>
+<li><p>对比度归一化</p>
+<p>为了处理不同位置上由于光照变化引起的梯度强度不同和前景背景对比度不同局部对比度必须归一化。即使每个块（block，是2*2个cell）之间有重叠，每个块 (重叠的) 也是独立地进行归一化。</p>
+</li>
+<li><p>形成HOG描述子</p>
+<p>每个胞体进行归一化作为分量组成块。然后把窗口内所有块 (重叠) 组合起来形成最后的描述子。 HOG描述子是用来描述整体窗口的。</p>
+</li>
+</ol>
+<h3 id="四、关键点特征"><a href="#四、关键点特征" class="headerlink" title="四、关键点特征"></a>四、关键点特征</h3><h4 id="4-1-Harris角点特征"><a href="#4-1-Harris角点特征" class="headerlink" title="4.1 Harris角点特征"></a>4.1 Harris角点特征</h4><p>原理：使用一个滑动窗口在图中滑动，可以得出以下结论：</p>
+<ul>
+<li>一个平坦区域，在各方向移动，窗口内像素值均没有太大变化；</li>
+<li>一个边缘特征（Edges），如果沿着水平方向移动(梯度方向)，像素值会发生跳变；如果沿着边缘移动(平行于边缘) ，像素值不会发生变化；</li>
+<li>一个角（Corners），不管你把它朝哪个方向移动，像素值都会发生很大变化。</li>
+</ul>
+<p>角响应测度公式<br>$$<br>R&#x3D;\lambda_x\lambda_y-k(\lambda_x+\lambda_y)^2<br>$$</p>
+<ul>
+<li>两个特征值都较大时，测度R具有较大的正值，这表示存在一个角</li>
+<li>一个特征值较大一个特征值较小时，测度R具有较大的负值，表示存在边界</li>
+<li>两个特征值都较小时，表明正在考虑的小块图像是平坦的</li>
+<li>公式的优点是计算开销小</li>
+<li>k越小越容易找到角</li>
+</ul>
+<h4 id="4-2-尺度不变特征变换（SIFT）"><a href="#4-2-尺度不变特征变换（SIFT）" class="headerlink" title="4.2 尺度不变特征变换（SIFT）"></a>4.2 尺度不变特征变换（SIFT）</h4><p>尺度不变特征转换（Scale-Invariant Feature Transform，SIFT）是一种计算机视觉中常用的特征提取算法，它能够检测图像中的关键点并提取这些关键点的特征描述符，同时具有尺度不变性和旋转不变性。</p>
+<p>SIFT算法的主要特点和步骤包括：</p>
+<ol>
+<li>尺度空间极值检测：SIFT首先在不同尺度下对图像进行高斯模糊处理，然后通过比较每个像素点周围区域的像素值，寻找图像中的局部极值点。这些局部极值点被认为是关键点的候选者。</li>
+<li>关键点定位：对于检测到的局部极值点，SIFT通过拟合二维高斯函数来确定它们的精确位置，同时估计关键点的尺度（尺度不变性的关键之一）。</li>
+<li>方向分配：为了增强SIFT特征的旋转不变性，对每个关键点附近的图像区域计算梯度方向直方图，然后选择主要梯度方向作为关键点的主要方向。</li>
+<li>特征描述符：以关键点为中心，在关键点的周围区域构建一个方向直方图，该直方图描述了关键点周围区域的梯度信息。这个直方图成为SIFT特征描述符，通常包含128个浮点数值。</li>
+</ol>
+<p>SIFT特征具有多种优点，包括尺度不变性、旋转不变性、对光照变化的鲁棒性等。因此，SIFT特征常用于图像匹配、物体识别、图像拼接和三维重建等计算机视觉任务中。</p>
+<ul>
+<li><p><strong>高斯核卷积的物理意义：</strong></p>
+<p><strong>高斯核卷积用于对图像进行平滑处理和构建尺度空间，实现特征提取和尺度不变性。</strong></p>
+</li>
+<li><p><strong>高斯差分核卷积的物理意义：</strong></p>
+<p><strong>高斯差分核卷积用于检测图像中的尺度空间极值点，即关键点</strong>。</p>
+</li>
+<li><p><strong>尺度不变性：</strong></p>
+<p>在SIFT算法中，通过构建高斯金字塔来实现图像的尺度不变性。高斯金字塔是<strong>通过在不同尺度下对图像进行平滑处理而构建的多层图像序列。通过在不同尺度上检测和描述特征，SIFT算法可以在不同尺度下找到具有相似特征的关键点，从而实现尺度不变性</strong>。</p>
+</li>
+<li><p><strong>旋转不变性：</strong></p>
+<p>SIFT算法引入了方向直方图来实现图像的旋转不变性。<strong>在检测到关键点后，SIFT算法会计算关键点周围的梯度方向，并将其转化为一个方向直方图。然后，通过在该直方图中寻找主导方向（即梯度方向最强的峰值），可以确定关键点的主导方向</strong>。<strong>最后，在描述关键点特征时，将关键点的描述子相对于主导方向进行旋转，从而实现旋转不变性</strong>。这样，即使图像发生旋转，关键点在描述子中的特征仍然保持不变。</p>
+</li>
+</ul>
+<h3 id="五、特征聚合方式"><a href="#五、特征聚合方式" class="headerlink" title="五、特征聚合方式"></a>五、特征聚合方式</h3><h4 id="5-1-简单聚合"><a href="#5-1-简单聚合" class="headerlink" title="5.1 简单聚合"></a>5.1 简单聚合</h4><ul>
+<li>求平均</li>
+<li>求和</li>
+<li>求最大值</li>
+</ul>
+<h4 id="5-2-特征编码算法"><a href="#5-2-特征编码算法" class="headerlink" title="5.2 特征编码算法"></a>5.2 特征编码算法</h4><p>将局部特征聚合为整体的图像特征</p>
+<p>Bag of Words（BOW）</p>
+<p><a target="_blank" rel="noopener" href="http://typora-win11.oss-cn-beijing.aliyuncs.com/typora-img/2023/12/20/20231220-091144.png"><img src="http://typora-win11.oss-cn-beijing.aliyuncs.com/typora-img/2023/12/20/20231220-091144.png" alt="img"></a></p>
+<h2 id="第八章-视频特征提取"><a href="#第八章-视频特征提取" class="headerlink" title="第八章 视频特征提取"></a>第八章 视频特征提取</h2><p>视频分类方法：</p>
+<ul>
+<li>基于手工特征的视频分类</li>
+<li>深度学习</li>
+</ul>
+<p>特征：</p>
+<ul>
+<li>静态信息：视频帧</li>
+<li>动态信息：光流</li>
+<li>长时序特征：轨迹特征（DT、IDT）</li>
+</ul>
+<p><strong>光流</strong></p>
+<ul>
+<li><p><strong>定义</strong>：可以确定（也许是所有的）图像点上运动方向和运动速率，反映了在时间间隔$d_r$内由于运动所造成的图像变化</p>
+</li>
+<li><p>一般而言，光流是由于场景中前景目标本身的移动、相机的运动，或者两者的共同运动所产生的</p>
+</li>
+<li><p>缺陷：</p>
+<ul>
+<li>传统稠密光流方法运算开支大</li>
+<li>理论的基础建立在同一物体亮度恒定以及物体位移较小的假设上</li>
+<li>只能表示短时序的运动特征</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-DT（Dense-Trajectories）"><a href="#1-DT（Dense-Trajectories）" class="headerlink" title="1. DT（Dense Trajectories）"></a>1. DT（Dense Trajectories）</h3><p>“Dense Trajectories” (DT) 算法是一种视频分析方法，主要用于动作识别和相关领域。该算法通过跟踪视频中的特征点来分析运动模式。它在计算机视觉和视频处理领域中得到了广泛的应用，尤其是在运动分析和行为识别等领域。</p>
+<p>主要步骤：</p>
+<ol>
+<li><strong>特征点检测</strong>：在视频的每一帧中检测出感兴趣的特征点。这些点通常是图像中的角点或边缘，它们可以代表图像中的显著特征。</li>
+<li><strong>特征点跟踪</strong>：<strong>使用光流法跟踪这些关键点点随时间的运动</strong>。<strong>每隔L(15)帧需要重新进行密集特征点采样, 降低漂移现象</strong></li>
+<li><strong>轨迹提取</strong>：通过连接连续帧中跟踪到的同一特征点的位置，提取出运动轨迹。</li>
+<li><strong>描述子提取</strong>：对提取出的轨迹进行编码，以捕捉运动的特征。这通常涉及到计算轨迹周围的光流统计特征，如方向和速度。</li>
+</ol>
+<p>​	特征描述子介绍：</p>
+<p>​		HOG: 计算灰度图像的梯度直方图，通过计算和统计视频局部区域梯度方向的直方图以描述视频的静态信息</p>
+<p>​		HOF:计算<strong>光流的直方图</strong>,通过计算和统计光流方向的直方图以描述视频的运动信息</p>
+<p>​		MBH特征:可以理解为<strong>在光流图像上计算的HOG特征</strong></p>
+<p>​		对于每一段轨迹，都有一组特征描述子(trajectory,HOG,HOF,MBH)</p>
+<p>​	5.<strong>分类与识别</strong>：使用机器学习或深度学习方法，根据提取的特征对动作进行分类或识别。</p>
+<p><strong>MBH相对于HOF的优点：MBH强调运动边界，忽略运动相一致的部分，减少背景运动产生的噪声，对方向敏感对亮度不敏感</strong>；</p>
+<p>优点：</p>
+<ol>
+<li>详细的运动信息：DT算法通过跟踪视频中的大量特征点来提供详细的运动信息，这对于理解复杂的动作模式非常有用。</li>
+<li>对小运动敏感：它能够捕捉到微小的运动变化，这在一些需要精细动作识别的应用中非常重要。</li>
+<li>鲁棒性：DT算法在处理动态背景或摄像机运动时相对鲁棒，因为它依赖于对特征点的局部跟踪。</li>
+</ol>
+<p>缺点：</p>
+<ol>
+<li>计算成本高：跟踪大量特征点需要大量的计算资源，特别是在高分辨率视频中。</li>
+<li>对遮挡敏感：如果特征点被遮挡，轨迹的连续性会受到影响，从而降低识别精度。</li>
+<li>视角依赖性：算法的性能可能会受到拍摄角度的限制，特别是在特征点不易区分或在不同视角下表现不同的情况下。</li>
+</ol>
+<h3 id="2-IDT（improved-dense-trajectory）"><a href="#2-IDT（improved-dense-trajectory）" class="headerlink" title="2. IDT（improved dense trajectory）"></a>2. IDT（improved dense trajectory）</h3><p>Improved Dense Trajectories（IDT）是 Dense Trajectories（DT）算法的一个改进版本，专门针对DT算法的一些限制进行了优化。IDT在视频分析和动作识别方面取得了显著的性能提升。以下是IDT相对于DT的改进：</p>
+<ol>
+<li><strong>无关运动估计方面</strong><ul>
+<li><strong>IDT</strong>：<strong>引入了摄像机运动补偿机制消除背景光流。</strong></li>
+</ul>
+</li>
+<li><strong>特征编码方面</strong><ul>
+<li><strong>IDT</strong>：<strong>IDT特征采用费雪向量（fisher vector，FV）模型代替DT特征中的BoF模型</strong></li>
+</ul>
+</li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://wwwty1231.github.io">wwwty1231</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://wwwty1231.github.io/post/e6f34951.html">http://wwwty1231.github.io/post/e6f34951.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://wwwty1231.github.io" target="_blank">wwwty1231的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a><a class="post-meta__tags" href="/tags/nlp/">nlp</a><a class="post-meta__tags" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a></div><div class="post_share"><div class="social-share" data-image="/img/cover1.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/post/c4683e1f.html" title="ubuntu下配置oh my zsh"><img class="cover" src="/img/1.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">ubuntu下配置oh my zsh</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E4%BF%A1%E6%81%AF%E5%86%85%E5%AE%B9%E8%8E%B7%E5%8F%96%E6%8A%80%E6%9C%AF"><span class="toc-number">1.</span> <span class="toc-text">网络信息内容获取技术</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E7%BD%91%E7%BB%9C%E4%BF%A1%E6%81%AF%E5%86%85%E5%AE%B9%E8%8E%B7%E5%8F%96%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.1.</span> <span class="toc-text">一、网络信息内容获取模型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%92%E8%81%94%E7%BD%91%E4%BF%A1%E6%81%AF%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.1.1.</span> <span class="toc-text">互联网信息类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E5%AA%92%E4%BD%93%E4%BF%A1%E6%81%AF%E8%8E%B7%E5%8F%96%E7%9A%84%E5%88%86%E7%B1%BB"><span class="toc-number">1.1.2.</span> <span class="toc-text">网络媒体信息获取的分类</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E6%8A%80%E6%9C%AF"><span class="toc-number">1.2.</span> <span class="toc-text">二、搜索引擎技术</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E7%BD%91%E4%B8%8A%E9%87%87%E9%9B%86%E7%AE%97%E6%B3%95%EF%BC%88%E7%88%AC%E8%99%AB%EF%BC%89"><span class="toc-number">1.2.1.</span> <span class="toc-text">1 网上采集算法（爬虫）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E6%8E%92%E7%BA%A7%E7%AE%97%E6%B3%95"><span class="toc-number">1.2.2.</span> <span class="toc-text">2 排级算法**</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#PageRank"><span class="toc-number">1.2.2.1.</span> <span class="toc-text">PageRank</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#HITS"><span class="toc-number">1.2.2.2.</span> <span class="toc-text">HITS</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E6%8A%80%E6%9C%AF"><span class="toc-number">1.3.</span> <span class="toc-text">三、数据挖掘技术</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Web%E6%8C%96%E6%8E%98%E6%8A%80%E6%9C%AF"><span class="toc-number">1.3.1.</span> <span class="toc-text">Web挖掘技术</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Web%E6%96%87%E6%9C%AC%E6%8C%96%E6%8E%98%E6%8A%80%E6%9C%AF"><span class="toc-number">1.3.2.</span> <span class="toc-text">Web文本挖掘技术</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E4%BF%A1%E6%81%AF%E6%8E%A8%E8%8D%90%E6%8A%80%E6%9C%AF"><span class="toc-number">1.4.</span> <span class="toc-text">四、信息推荐技术</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E4%BF%A1%E6%81%AF%E8%BF%98%E5%8E%9F%E6%8A%80%E6%9C%AF"><span class="toc-number">1.5.</span> <span class="toc-text">五、信息还原技术</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E6%9C%AC%E6%8C%96%E6%8E%98%E5%9F%BA%E7%A1%80"><span class="toc-number">2.</span> <span class="toc-text">文本挖掘基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E8%AF%8D"><span class="toc-number">2.1.</span> <span class="toc-text">分词</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%87%E6%9C%AC%E7%89%B9%E5%BE%81%E9%A2%84%E5%A4%84%E7%90%86"><span class="toc-number">2.1.1.</span> <span class="toc-text">文本特征预处理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%89%B9%E5%BE%81%E6%8A%BD%E5%8F%96"><span class="toc-number">2.1.2.</span> <span class="toc-text">特征抽取</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B1%89%E8%AF%AD%E5%88%86%E8%AF%8D"><span class="toc-number">2.1.3.</span> <span class="toc-text">汉语分词</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E6%A1%A3%E6%A8%A1%E5%9E%8B"><span class="toc-number">2.2.</span> <span class="toc-text">文档模型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%83%E5%B0%94%E6%A8%A1%E5%9E%8B"><span class="toc-number">2.2.1.</span> <span class="toc-text">布尔模型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%8D%E8%A2%8B%E6%A8%A1%E5%9E%8B"><span class="toc-number">2.2.2.</span> <span class="toc-text">词袋模型</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E6%A1%A3%E7%9B%B8%E4%BC%BC%E5%BA%A6%E8%AE%A1%E7%AE%97"><span class="toc-number">2.3.</span> <span class="toc-text">文档相似度计算</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E6%9C%AC%E5%88%86%E7%B1%BB%E7%AE%97%E6%B3%95"><span class="toc-number">3.</span> <span class="toc-text">文本分类算法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%84%E4%BB%B7%E6%8C%87%E6%A0%87"><span class="toc-number">3.1.</span> <span class="toc-text">评价指标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%B9%E5%BE%81%E9%80%89%E6%8B%A9"><span class="toc-number">3.2.</span> <span class="toc-text">特征选择</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E7%B1%BB%E7%AE%97%E6%B3%95"><span class="toc-number">3.3.</span> <span class="toc-text">分类算法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#KNN%E5%88%86%E7%B1%BB"><span class="toc-number">3.3.1.</span> <span class="toc-text">KNN分类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB"><span class="toc-number">3.3.2.</span> <span class="toc-text">贝叶斯分类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SVM%E5%88%86%E7%B1%BB"><span class="toc-number">3.3.3.</span> <span class="toc-text">SVM分类</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E6%9C%AC%E6%8C%96%E6%8E%98%E2%80%93%E8%81%9A%E7%B1%BB"><span class="toc-number">4.</span> <span class="toc-text">文本挖掘–聚类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%81%9A%E7%B1%BB%E6%96%B9%E6%B3%95%E6%A6%82%E8%BF%B0"><span class="toc-number">4.1.</span> <span class="toc-text">聚类方法概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%92%E5%88%86%E8%81%9A%E7%B1%BB%E6%96%B9%E6%B3%95"><span class="toc-number">4.2.</span> <span class="toc-text">划分聚类方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#k-means-%E7%AE%97%E6%B3%95"><span class="toc-number">4.2.1.</span> <span class="toc-text">k-means 算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#PAM%E7%AE%97%E6%B3%95"><span class="toc-number">4.2.2.</span> <span class="toc-text">PAM算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B0%B1%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95"><span class="toc-number">4.2.3.</span> <span class="toc-text">谱聚类算法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B1%82%E6%AC%A1%E8%81%9A%E7%B1%BB"><span class="toc-number">4.3.</span> <span class="toc-text">层次聚类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#AGNES%E7%AE%97%E6%B3%95"><span class="toc-number">4.3.1.</span> <span class="toc-text">AGNES算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#DIANA%E7%AE%97%E6%B3%95"><span class="toc-number">4.3.2.</span> <span class="toc-text">DIANA算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Birch%E7%AE%97%E6%B3%95"><span class="toc-number">4.3.3.</span> <span class="toc-text">Birch算法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%86%E5%BA%A6%E8%81%9A%E7%B1%BB"><span class="toc-number">4.4.</span> <span class="toc-text">密度聚类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#DBSCAN%E7%AE%97%E6%B3%95"><span class="toc-number">4.4.1.</span> <span class="toc-text">DBSCAN算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#OPTICS%E7%AE%97%E6%B3%95"><span class="toc-number">4.4.2.</span> <span class="toc-text">OPTICS算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#DENCLUE%E7%AE%97%E6%B3%95"><span class="toc-number">4.4.3.</span> <span class="toc-text">DENCLUE算法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E5%AE%83%E8%81%9A%E7%B1%BB%E6%96%B9%E6%B3%95"><span class="toc-number">4.5.</span> <span class="toc-text">其它聚类方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#WaveCluster%EF%BC%9A%E5%B0%8F%E6%B3%A2%E5%8F%98%E6%8D%A2%E8%81%9A%E7%B1%BB"><span class="toc-number">4.5.1.</span> <span class="toc-text">WaveCluster：小波变换聚类</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E8%88%86%E6%83%85%E5%88%86%E6%9E%90"><span class="toc-number">5.</span> <span class="toc-text">网络舆情分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E7%BD%91%E7%BB%9C%E8%88%86%E6%83%85%E6%A6%82%E8%BF%B0"><span class="toc-number">5.1.</span> <span class="toc-text">一、网络舆情概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E7%BD%91%E7%BB%9C%E8%B0%A3%E8%A8%80"><span class="toc-number">5.2.</span> <span class="toc-text">二、网络谣言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E7%BD%91%E7%BB%9C%E6%B0%B4%E5%86%9B"><span class="toc-number">5.3.</span> <span class="toc-text">三、网络水军</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E8%AF%9D%E9%A2%98%E6%A3%80%E6%B5%8B%E4%B8%8E%E8%B7%9F%E8%B8%AA"><span class="toc-number">5.4.</span> <span class="toc-text">四、话题检测与跟踪</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-%E8%AF%9D%E9%A2%98%E8%A1%A8%E7%A4%BA%E4%B8%8E%E5%85%B3%E8%81%94%E6%A3%80%E6%B5%8B"><span class="toc-number">5.4.1.</span> <span class="toc-text">4.1 话题表示与关联检测</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E5%90%91%E9%87%8F%E7%A9%BA%E9%97%B4%E6%A8%A1%E5%9E%8B"><span class="toc-number">5.4.1.1.</span> <span class="toc-text">1. 向量空间模型</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B"><span class="toc-number">5.4.1.2.</span> <span class="toc-text">2.语言模型</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-%E8%AF%9D%E9%A2%98%E6%A3%80%E6%B5%8B"><span class="toc-number">5.4.2.</span> <span class="toc-text">4.2 话题检测*</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E5%9C%A8%E7%BA%BF%E8%AF%9D%E9%A2%98%E6%A3%80%E6%B5%8B"><span class="toc-number">5.4.2.1.</span> <span class="toc-text">1. 在线话题检测</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%9B%9E%E6%BA%AF%E8%AF%9D%E9%A2%98%E6%A3%80%E6%B5%8B"><span class="toc-number">5.4.2.2.</span> <span class="toc-text">回溯话题检测</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-3-%E8%AF%9D%E9%A2%98%E8%B7%9F%E8%B8%AA"><span class="toc-number">5.4.3.</span> <span class="toc-text">4.3 话题跟踪*</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E7%A4%BE%E4%BA%A4%E7%BD%91%E7%BB%9C%E7%AA%81%E5%8F%91%E4%BA%8B%E4%BB%B6%E6%A3%80%E6%B5%8B"><span class="toc-number">5.5.</span> <span class="toc-text">五、社交网络突发事件检测</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E5%85%AD%E7%AB%A0-%E7%A4%BE%E4%BA%A4%E7%BD%91%E7%BB%9C%E5%88%86%E6%9E%90"><span class="toc-number">6.</span> <span class="toc-text">第六章 社交网络分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">6.1.</span> <span class="toc-text">一、基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E7%BB%93%E7%82%B9%E6%8E%92%E5%BA%8F"><span class="toc-number">6.2.</span> <span class="toc-text">二、结点排序</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-%E5%9F%BA%E4%BA%8E%E7%BB%93%E7%82%B9%E8%BF%91%E9%82%BB%E7%9A%84%E6%8E%92%E5%BA%8F%E6%96%B9%E6%B3%95"><span class="toc-number">6.2.1.</span> <span class="toc-text">2.1 基于结点近邻的排序方法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E5%BA%A6%E4%B8%AD%E5%BF%83%E6%80%A7"><span class="toc-number">6.2.1.1.</span> <span class="toc-text">1. 度中心性</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-K-%E5%A3%B3%E5%88%86%E8%A7%A3"><span class="toc-number">6.2.1.2.</span> <span class="toc-text">2. K-壳分解</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-%E5%9F%BA%E4%BA%8E%E8%B7%AF%E5%BE%84%E7%9A%84%E6%8E%92%E5%BA%8F%E6%96%B9%E6%B3%95"><span class="toc-number">6.2.2.</span> <span class="toc-text">2.2 基于路径的排序方法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E6%8E%A5%E8%BF%91%E4%B8%AD%E5%BF%83%E6%80%A7"><span class="toc-number">6.2.2.1.</span> <span class="toc-text">1. 接近中心性</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-Katz%E4%B8%AD%E5%BF%83%E6%80%A7"><span class="toc-number">6.2.2.2.</span> <span class="toc-text">2. Katz中心性</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-%E4%BB%8B%E6%95%B0%E4%B8%AD%E5%BF%83%E6%80%A7"><span class="toc-number">6.2.2.3.</span> <span class="toc-text">3. 介数中心性</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-%E5%9F%BA%E4%BA%8E%E7%89%B9%E5%BE%81%E5%90%91%E9%87%8F%E7%9A%84%E6%8E%92%E5%BA%8F%E6%96%B9%E6%B3%95"><span class="toc-number">6.2.3.</span> <span class="toc-text">2.3 基于特征向量的排序方法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E7%89%B9%E5%BE%81%E5%90%91%E9%87%8F%E4%B8%AD%E5%BF%83%E6%80%A7"><span class="toc-number">6.2.3.1.</span> <span class="toc-text">1. 特征向量中心性</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-PageRank%E7%AE%97%E6%B3%95"><span class="toc-number">6.2.3.2.</span> <span class="toc-text">2. PageRank算法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E9%93%BE%E8%B7%AF%E9%A2%84%E6%B5%8B"><span class="toc-number">6.3.</span> <span class="toc-text">三、链路预测</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-%E5%9F%BA%E4%BA%8E%E7%BB%93%E7%82%B9%E5%B1%9E%E6%80%A7%E7%9A%84%E7%9B%B8%E4%BC%BC%E6%80%A7%E6%8C%87%E6%A0%87"><span class="toc-number">6.3.1.</span> <span class="toc-text">3.1 基于结点属性的相似性指标</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-%E5%9F%BA%E4%BA%8E%E5%B1%80%E9%83%A8%E4%BF%A1%E6%81%AF%E7%9A%84%E7%9B%B8%E4%BC%BC%E6%80%A7%E6%8C%87%E6%A0%87"><span class="toc-number">6.3.2.</span> <span class="toc-text">3.2 基于局部信息的相似性指标</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E4%BC%98%E5%85%88%E8%BF%9E%E6%8E%A5%E6%8C%87%E6%A0%87%EF%BC%88preferential-attachment%EF%BC%8CPA%EF%BC%89"><span class="toc-number">6.3.2.1.</span> <span class="toc-text">1. 优先连接指标（preferential attachment，PA）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-%E5%85%B1%E5%90%8C%E9%82%BB%E5%B1%85%E6%8C%87%E6%A0%87%EF%BC%88common-neighbor%EF%BC%8CCN%EF%BC%89"><span class="toc-number">6.3.2.2.</span> <span class="toc-text">2.共同邻居指标（common neighbor，CN）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-AA%E6%8C%87%E6%A0%87"><span class="toc-number">6.3.2.3.</span> <span class="toc-text">3. AA指标</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-%E8%B5%84%E6%BA%90%E5%88%86%E9%85%8D%E6%8C%87%E6%A0%87%EF%BC%88resource-allocation%EF%BC%8CRA%EF%BC%89"><span class="toc-number">6.3.2.4.</span> <span class="toc-text">4. 资源分配指标（resource allocation，RA）</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-%E5%9F%BA%E4%BA%8E%E8%B7%AF%E5%BE%84%E7%9A%84%E7%9B%B8%E4%BC%BC%E6%80%A7%E6%8C%87%E6%A0%87"><span class="toc-number">6.3.3.</span> <span class="toc-text">3.3 基于路径的相似性指标</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E8%B7%AF%E5%BE%84%E6%8C%87%E6%A0%87LP%EF%BC%88local-path%EF%BC%89"><span class="toc-number">6.3.3.1.</span> <span class="toc-text">1. 路径指标LP（local path）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E4%BF%A1%E6%81%AF%E6%89%A9%E6%95%A3%E6%A8%A1%E5%9E%8B"><span class="toc-number">6.4.</span> <span class="toc-text">四、信息扩散模型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E7%BA%BF%E6%80%A7%E9%98%88%E5%80%BC%E6%A8%A1%E5%9E%8B%EF%BC%88Linear-Threshold-Model%EF%BC%89"><span class="toc-number">6.4.1.</span> <span class="toc-text">1. 线性阈值模型（Linear Threshold Model）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E7%8B%AC%E7%AB%8B%E7%BA%A7%E8%81%94%E6%A8%A1%E5%9E%8B%EF%BC%88Independent-Cascade-Model%EF%BC%89"><span class="toc-number">6.4.2.</span> <span class="toc-text">2. 独立级联模型（Independent Cascade Model）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E5%BD%B1%E5%93%8D%E5%8A%9B%E6%9C%80%E5%A4%A7%E5%8C%96%E9%97%AE%E9%A2%98"><span class="toc-number">6.4.3.</span> <span class="toc-text">3. 影响力最大化问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E6%84%9F%E6%9F%93%E6%A8%A1%E5%9E%8B"><span class="toc-number">6.4.4.</span> <span class="toc-text">4. 感染模型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-SIR%E6%A8%A1%E5%9E%8B"><span class="toc-number">6.4.5.</span> <span class="toc-text">5. SIR模型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-SIS%E6%A8%A1%E5%9E%8B"><span class="toc-number">6.4.6.</span> <span class="toc-text">6. SIS模型</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%83%E7%AB%A0-%E5%9B%BE%E5%83%8F%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96"><span class="toc-number">7.</span> <span class="toc-text">第七章 图像特征提取</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%83%8F%E7%B4%A0%E7%89%B9%E5%BE%81"><span class="toc-number">7.1.</span> <span class="toc-text">一、像素特征</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E7%BA%B9%E7%90%86%E7%89%B9%E5%BE%81"><span class="toc-number">7.2.</span> <span class="toc-text">二、纹理特征</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-%E5%85%B1%E7%94%9F%E7%9F%A9%E9%98%B5%E6%8F%8F%E8%BF%B0%E5%AD%90"><span class="toc-number">7.2.1.</span> <span class="toc-text">2.1 共生矩阵描述子</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-%E5%B1%80%E9%83%A8%E4%BA%8C%E5%80%BC%E6%A8%A1%E5%BC%8F%EF%BC%88LBPs%EF%BC%89"><span class="toc-number">7.2.2.</span> <span class="toc-text">2.2 局部二值模式（LBPs）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%8C%BA%E5%9F%9F%E7%89%B9%E5%BE%81"><span class="toc-number">7.3.</span> <span class="toc-text">三、区域特征</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-%E6%A2%AF%E5%BA%A6%E6%96%B9%E5%90%91%E7%9B%B4%E6%96%B9%E5%9B%BE-HOG"><span class="toc-number">7.3.1.</span> <span class="toc-text">3.1 梯度方向直方图-HOG</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%85%B3%E9%94%AE%E7%82%B9%E7%89%B9%E5%BE%81"><span class="toc-number">7.4.</span> <span class="toc-text">四、关键点特征</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-Harris%E8%A7%92%E7%82%B9%E7%89%B9%E5%BE%81"><span class="toc-number">7.4.1.</span> <span class="toc-text">4.1 Harris角点特征</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-%E5%B0%BA%E5%BA%A6%E4%B8%8D%E5%8F%98%E7%89%B9%E5%BE%81%E5%8F%98%E6%8D%A2%EF%BC%88SIFT%EF%BC%89"><span class="toc-number">7.4.2.</span> <span class="toc-text">4.2 尺度不变特征变换（SIFT）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E7%89%B9%E5%BE%81%E8%81%9A%E5%90%88%E6%96%B9%E5%BC%8F"><span class="toc-number">7.5.</span> <span class="toc-text">五、特征聚合方式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#5-1-%E7%AE%80%E5%8D%95%E8%81%9A%E5%90%88"><span class="toc-number">7.5.1.</span> <span class="toc-text">5.1 简单聚合</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-2-%E7%89%B9%E5%BE%81%E7%BC%96%E7%A0%81%E7%AE%97%E6%B3%95"><span class="toc-number">7.5.2.</span> <span class="toc-text">5.2 特征编码算法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E5%85%AB%E7%AB%A0-%E8%A7%86%E9%A2%91%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96"><span class="toc-number">8.</span> <span class="toc-text">第八章 视频特征提取</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-DT%EF%BC%88Dense-Trajectories%EF%BC%89"><span class="toc-number">8.1.</span> <span class="toc-text">1. DT（Dense Trajectories）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-IDT%EF%BC%88improved-dense-trajectory%EF%BC%89"><span class="toc-number">8.2.</span> <span class="toc-text">2. IDT（improved dense trajectory）</span></a></li></ol></li></ol></div></div></div></div></main><footer id="footer" style="background-image: url('/img/cover1.png')"><div id="footer-wrap"><div class="copyright">&copy;2023 By wwwty1231</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hi, welcome to my blog!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-show-text.min.js" data-mobile="false" data-text="I,LOVE,YOU" data-fontsize="15px" data-random="false" async="async"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
